@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-10">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shobhit Mishra | AI & Project Hero</title>
+    <title>Shobhit Mishra | AI & Project Lead</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -28,7 +28,6 @@
 
         .container { max-width: 1100px; margin: 0 auto; }
 
-        /* --- CONTACT HEADER --- */
         .hero-card {
             border: 2px solid var(--tron-blue);
             padding: 40px;
@@ -60,7 +59,7 @@
             flex-wrap: wrap;
         }
 
-        .contact-item { border: 1px solid var(--tron-green); padding: 5px 15px; background: rgba(0, 255, 149, 0.1); }
+        .contact-item { border: 1px solid var(--tron-green); padding: 5px 15px; background: rgba(0, 255, 149, 0.1); text-decoration: none; color: inherit; }
 
         .summary-box {
             margin-top: 30px;
@@ -72,11 +71,8 @@
             font-size: 1.1rem;
         }
 
-        /* --- GRID PANELS --- */
         .grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
-
         .panel { background: var(--panel-bg); padding: 25px; position: relative; }
-
         .blue-border { border: 1px solid var(--tron-blue); box-shadow: 0 0 15px rgba(0, 242, 255, 0.3); }
         .green-border { border: 1px solid var(--tron-green); box-shadow: 0 0 15px rgba(0, 255, 149, 0.3); }
         .red-border { border: 2px solid var(--tron-red); box-shadow: 0 0 20px rgba(255, 0, 60, 0.4); }
@@ -86,26 +82,18 @@
         .green-text { color: var(--tron-green); }
         .red-text { color: var(--tron-red); text-shadow: 0 0 10px var(--tron-red); }
 
-        /* --- CREDIT HALL OF FAME --- */
-       /* Styling the links inside the credit items */
-.credit-item a {
-    text-decoration: none; /* Removes the underline */
-    color: #fff;           /* Keeps the text white */
-    display: block;        /* Makes the whole box clickable */
-    transition: 0.3s;
-}
-
-.credit-item a:hover {
-    color: var(--tron-red); /* Changes text to red on hover */
-    text-shadow: 0 0 10px var(--tron-red); /* Adds a neon glow */
-}
-
-/* Optional: Add a small icon or hint that it is a link */
-.credit-item::after {
-    content: ' 🔗';
-    font-size: 0.7rem;
-    opacity: 0.5;
-}
+        .credit-list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; }
+        .credit-item {
+            background: rgba(255, 0, 60, 0.1);
+            border: 1px solid var(--tron-red);
+            padding: 8px 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+        .credit-item a { text-decoration: none; color: #fff; display: block; }
+        .credit-item:hover { background: var(--tron-red); box-shadow: 0 0 15px var(--tron-red); }
+        .credit-item a:hover { color: #000; }
 
         .skill-tag {
             display: inline-block;
@@ -115,6 +103,16 @@
             font-size: 0.8rem;
             color: var(--tron-green);
         }
+
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            opacity: 0.9;
+        }
+        .archive-item { border-left: 2px solid var(--tron-blue); padding-left: 10px; margin-bottom: 10px; }
+        .archive-company { color: var(--tron-blue); font-weight: bold; display: block; }
+        .archive-role { font-size: 0.85rem; opacity: 0.7; }
 
         .btn-link {
             display: block;
@@ -128,7 +126,6 @@
             transition: 0.3s;
             background: rgba(0, 242, 255, 0.05);
         }
-
         .btn-link:hover { background: var(--tron-blue); color: #000; box-shadow: 0 0 40px var(--tron-blue); }
 
         @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } .contact-uplink { flex-direction: column; gap: 10px; } }
@@ -139,77 +136,114 @@
 <div class="container">
     <header class="hero-card">
         <h1>SHOBHIT MISHRA</h1>
-        
         <div class="contact-uplink">
             <span class="contact-item">📞 +91 8451935845</span>
-            <span class="contact-item">📧 shobhitvfx@gmail.com</span>
-            <span class="contact-item">📍 PUNE, MH</span>
+            <a href="mailto:shobhitvfx@gmail.com" class="contact-item">📧 shobhitvfx@gmail.com</a>
+            <span class="contact-item">📍 PUNE, MAHARASHTRA</span>
         </div>
 
         <div class="summary-box">
             <strong class="blue-text">EXECUTIVE SUMMARY:</strong><br>
-            Results-driven professional with <strong>13 years of experience</strong> across Agile, Scrum, SaaS, and Generative AI platforms. 
-            Proven expertise in project lifecycle management, stakeholder engagement, and risk mitigation. 
-            A specialist in <strong>AI-driven content management</strong> and <strong>VR learning solutions</strong> with a foundation in world-class VFX production.
+            Results-driven professional with <strong>13 years of experience</strong> [cite: 4] in Agile, Scrum, SaaS, LMS, EdTech, and <strong>Generative AI-enabled platforms</strong>[cite: 4]. 
+            Proven expertise in <strong>project lifecycle management</strong> [cite: 5], stakeholder engagement [cite: 5], and <strong>AI-driven content management</strong>[cite: 6]. 
+            A specialist in delivering enterprise-scale solutions [cite: 6] and immersive <strong>VR learning experiences</strong>[cite: 6].
         </div>
     </header>
 
     <div class="grid">
         <div class="panel blue-border">
             <h2 class="blue-text">CURRENT MISSION: SQUADRA MEDIA</h2>
-            <p style="font-weight: bold; color: var(--tron-blue);">Senior Project Manager (AI/SaaS/LMS) | 2025 - Present</p>
+            <p style="font-weight: bold; color: var(--tron-blue);">Senior Project Manager (AI/SaaS/LMS) | 09/2025 - Present</p>
             <ul style="padding-left: 20px; opacity: 0.9; line-height: 1.6;">
-                <li>Managing enterprise LMS architecture for <strong>21,000+ active users</strong>.</li>
-                <li>Pioneering <strong>Generative AI integration</strong> for content personalization and intelligent training workflows.</li>
-                <li>Orchestrating end-to-end delivery of <strong>VR-enabled learning modules</strong> for immersive simulations.</li>
+                <li>Leading SaaS-based LMS platforms for <strong>21,000+ active users</strong>[cite: 36].</li>
+                <li>Driving <strong>Generative AI-enabled content management</strong> for personalization and intelligent recommendations[cite: 38].</li>
+                <li>Integrating <strong>VR-enabled learning</strong> experiences to support simulation-based training[cite: 39].</li>
+                <li>Managing end-to-end planning, execution, and Agile delivery cycles[cite: 32, 33].</li>
             </ul>
         </div>
 
         <div class="panel green-border">
             <h2 class="green-text">TECH ARSENAL</h2>
-            <div class="skill-tag">Generative AI</div>
-            <div class="skill-tag">Prompt Engineering</div>
-            <div class="skill-tag">Certified Scrum Master</div>
-            <div class="skill-tag">ShotGrid / SyncSketch</div>
-            <div class="skill-tag">SaaS Architecture</div>
-            <div class="skill-tag">Stakeholder Management</div>
+            <div class="skill-tag">Generative AI [cite: 8]</div>
+            <div class="skill-tag">Prompt Engineering [cite: 8]</div>
+            <div class="skill-tag">Agile & Scrum [cite: 13]</div>
+            <div class="skill-tag">ShotGrid [cite: 15]</div>
+            <div class="skill-tag">SyncSketch [cite: 16]</div>
+            <div class="skill-tag">SaaS / LMS [cite: 4]</div>
+            <div class="skill-tag">Stakeholder Engagement [cite: 10]</div>
+            <div class="skill-tag">VR Learning [cite: 6]</div>
         </div>
 
-        <ul class="credit-list">
-    <li class="credit-item">
-        <a href="https://www.imdb.com/title/tt4283088/" target="_blank">GAME OF THRONES (S6 E9)</a>
-    </li>
-    <li class="credit-item">
-        <a href="https://www.imdb.com/title/tt0369610/" target="_blank">JURASSIC WORLD (2015)</a>
-    </li>
-    <li class="credit-item">
-        <a href="https://www.imdb.com/title/tt4940456/?ref_=fn_t_1" target="_blank">MIRZYA</a>
-    </li>
-    <li class="credit-item">
-        <a href="https://www.imdb.com/title/tt4219438/" target="_blank">THE LOST TOMB</a>
-    </li>
-    <li class="credit-item">
-        <a href="https://www.imdb.com/title/tt6277462/" target="_blank">BRAHMASTRA</a>
-    </li>
-    <li class="credit-item">
-        <a href="https://www.imdb.com/title/tt27679608/" target="_blank">FATEH</a>
-    </li>
-</ul>
+        <div class="panel red-border" style="grid-column: 1 / -1;">
+            <h2 class="red-text">PRODUCTION CREDITS // HALL OF FAME</h2>
+            <ul class="credit-list">
+                <li class="credit-item"><a href="https://www.imdb.com/title/tt4283088/" target="_blank">GAME OF THRONES (S6 E9) [cite: 94]</a></li>
+                <li class="credit-item"><a href="https://www.imdb.com/title/tt0369610/" target="_blank">JURASSIC WORLD (2015)</a></li>
+                <li class="credit-item"><a href="https://www.imdb.com/title/tt4940456/?ref_=fn_t_1" target="_blank">MIRZYA [cite: 94]</a></li>
+                <li class="credit-item"><a href="https://www.imdb.com/title/tt4219438/" target="_blank">THE LOST TOMB [cite: 94]</a></li>
+                <li class="credit-item"><a href="https://www.imdb.com/title/tt6277462/" target="_blank">BRAHMASTRA</a></li>
+                <li class="credit-item"><a href="https://www.imdb.com/title/tt27679608/" target="_blank">FATEH</a></li>
+            </ul>
+            
+            <h2 class="red-text" style="margin-top:20px;">ADVERTISEMENT PROJECTS</h2>
+            <ul class="credit-list">
+                <li class="credit-item"><a href="https://youtu.be/bkmJtHTDACI?feature=shared" target="_blank">XIAOMI AD</a></li>
+                <li class="credit-item"><a href="https://www.instagram.com/p/B4AgGsmBOVE/?igsh=amw3OGppaXFlcWVy" target="_blank">BUDWEISER AD</a></li>
+            </ul>
         </div>
 
         <div class="panel blue-border" style="grid-column: 1 / -1;">
-            <h2 class="blue-text">CHRONICLE ARCHIVE (VFX & PROJECT MGMT)</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; opacity: 0.8; font-size: 0.9rem;">
-                <div><strong>DNEG</strong><br>Production Supervisor</div>
-                <div><strong>ALZAHRA VFX</strong><br>Project Delivery Manager</div>
-                <div><strong>HOOP VFX</strong><br>VFX Line Producer</div>
-                <div><strong>PRANA STUDIO</strong><br>VFX Artist</div>
-                <div><strong>PRIME FOCUS</strong><br>Stereo Compositor</div>
+            <h2 class="blue-text">CHRONICLE ARCHIVE (WORK HISTORY)</h2>
+            <div class="archive-grid">
+                <div class="archive-item">
+                    <span class="archive-company">DNEG [cite: 44]</span>
+                    <span class="archive-role">Production Supervisor / Project Manager [cite: 45]</span>
+                </div>
+                <div class="archive-item">
+                    <span class="archive-company">ALZAHRA VFX [cite: 52]</span>
+                    <span class="archive-role">Project Delivery Manager [cite: 53]</span>
+                </div>
+                <div class="archive-item">
+                    <span class="archive-company">HOOP VFX [cite: 60]</span>
+                    <span class="archive-role">VFX Line Producer [cite: 61]</span>
+                </div>
+                <div class="archive-item">
+                    <span class="archive-company">DNEG (Earlier) [cite: 65]</span>
+                    <span class="archive-role">Line Producer [cite: 65]</span>
+                </div>
+                <div class="archive-item">
+                    <span class="archive-company">MINTE ANIMATION STUDIO [cite: 70]</span>
+                    <span class="archive-role">Production Manager [cite: 71]</span>
+                </div>
+                <div class="archive-item">
+                    <span class="archive-company">REGH ANIMATION [cite: 76]</span>
+                    <span class="archive-role">Production Coordinator [cite: 77]</span>
+                </div>
+                <div class="archive-item">
+                    <span class="archive-company">GELAROGRACE STUDIO [cite: 79]</span>
+                    <span class="archive-role">Production Coordinator / Shoot Supervisor [cite: 80]</span>
+                </div>
+                <div class="archive-item">
+                    <span class="archive-company">UNIFI MEDIA [cite: 85]</span>
+                    <span class="archive-role">Production Coordinator [cite: 86]</span>
+                </div>
+                <div class="archive-item">
+                    <span class="archive-company">PRANA STUDIO [cite: 88]</span>
+                    <span class="archive-role">VFX Roto / Paint Artist [cite: 89]</span>
+                </div>
+                <div class="archive-item">
+                    <span class="archive-company">PRIME FOCUS [cite: 95]</span>
+                    <span class="archive-role">Paint Artist / Stereo Compositor [cite: 96, 106]</span>
+                </div>
+                <div class="archive-item">
+                    <span class="archive-company">DELUXE DIGI CAPTION [cite: 100]</span>
+                    <span class="archive-role">Roto 2nd Lead [cite: 101]</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <a href="mailto:shobhitvfx@gmail.com" class="btn-link">SEND TRANSMISSION</a>
+    <a href="mailto:shobhitvfx@gmail.com" class="btn-link">ESTABLISH UPLINK</a>
 </div>
 
 </body>
