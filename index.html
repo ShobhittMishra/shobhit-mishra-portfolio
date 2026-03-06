@@ -61,8 +61,43 @@
 
         .contact-item { border: 1px solid var(--tron-green); padding: 5px 15px; background: rgba(0, 255, 149, 0.1); text-decoration: none; color: inherit; }
 
-        .summary-box {
+        /* --- CERTIFICATIONS SECTION --- */
+        .cert-container {
             margin-top: 30px;
+            padding: 20px;
+            border: 1px solid var(--tron-green);
+            background: rgba(0, 255, 149, 0.05);
+            box-shadow: 0 0 15px rgba(0, 255, 149, 0.2);
+            text-align: left;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .cert-badge {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            padding: 10px;
+            border: 1px solid rgba(0, 255, 149, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+            font-size: 0.85rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .cert-badge:hover {
+            border-color: var(--tron-green);
+            background: rgba(0, 255, 149, 0.1);
+            box-shadow: 0 0 10px var(--tron-green);
+        }
+
+        .summary-box {
+            margin-top: 20px;
             padding: 20px;
             border-left: 4px solid var(--tron-blue);
             background: rgba(0, 242, 255, 0.05);
@@ -142,6 +177,24 @@
             <span class="contact-item">📍 PUNE, MAHARASHTRA</span>
         </div>
 
+        <div class="cert-container">
+            <h2 class="green-text" style="margin-top: 0;">VERIFIED CREDENTIALS</h2>
+            <div class="cert-grid">
+                <a href="https://bcert.me/bc/html/show-badge.html?b=pgaetekp" target="_blank" class="cert-badge">
+                    CERTIFIED SCRUMMASTER® (CSM)
+                </a>
+                <a href="https://www.credly.com/badges/c26aa206-fbab-48af-9ea7-d1d2587aa8aa/public_url" target="_blank" class="cert-badge">
+                    GENERATIVE AI FOR PROJECT MANAGERS
+                </a>
+                <a href="https://www.credly.com/badges/4f4879d2-3636-400a-a556-a75cae51efed/public_url" target="_blank" class="cert-badge">
+                    PMI ESSENTIALS: M.O.R.E.
+                </a>
+                <a href="https://learning.pmi.org/certificate?id=38163a35-fbd2-4088-a5af-3fa5da74b31a" target="_blank" class="cert-badge">
+                    PMI CITIZEN DEVELOPER™ ARCHITECT
+                </a>
+            </div>
+        </div>
+
         <div class="summary-box">
             <strong class="blue-text">EXECUTIVE SUMMARY:</strong><br>
             Results-driven professional with <strong>13 years of experience</strong> in Agile, Scrum, SaaS, LMS, EdTech, and <strong>Generative AI-enabled platforms</strong>. 
@@ -195,50 +248,16 @@
         <div class="panel blue-border" style="grid-column: 1 / -1;">
             <h2 class="blue-text">CHRONICLE ARCHIVE (WORK HISTORY)</h2>
             <div class="archive-grid">
-                <div class="archive-item">
-                    <span class="archive-company">DNEG</span>
-                    <span class="archive-role">Production Supervisor / Project Manager</span>
-                </div>
-                <div class="archive-item">
-                    <span class="archive-company">ALZAHRA VFX</span>
-                    <span class="archive-role">Project Delivery Manager</span>
-                </div>
-                <div class="archive-item">
-                    <span class="archive-company">HOOP VFX</span>
-                    <span class="archive-role">VFX Line Producer</span>
-                </div>
-                <div class="archive-item">
-                    <span class="archive-company">DNEG (Earlier)</span>
-                    <span class="archive-role">Line Producer</span>
-                </div>
-                <div class="archive-item">
-                    <span class="archive-company">MINTE ANIMATION STUDIO</span>
-                    <span class="archive-role">Production Manager</span>
-                </div>
-                <div class="archive-item">
-                    <span class="archive-company">REGH ANIMATION</span>
-                    <span class="archive-role">Production Coordinator</span>
-                </div>
-                <div class="archive-item">
-                    <span class="archive-company">GELAROGRACE STUDIO</span>
-                    <span class="archive-role">Production Coordinator / Shoot Supervisor</span>
-                </div>
-                <div class="archive-item">
-                    <span class="archive-company">UNIFI MEDIA</span>
-                    <span class="archive-role">Production Coordinator</span>
-                </div>
-                <div class="archive-item">
-                    <span class="archive-company">PRANA STUDIO</span>
-                    <span class="archive-role">VFX Roto / Paint Artist</span>
-                </div>
-                <div class="archive-item">
-                    <span class="archive-company">PRIME FOCUS</span>
-                    <span class="archive-role">Paint Artist / Stereo Compositor</span>
-                </div>
-                <div class="archive-item">
-                    <span class="archive-company">DELUXE DIGI CAPTION</span>
-                    <span class="archive-role">Roto 2nd Lead</span>
-                </div>
+                <div class="archive-item"><span class="archive-company">DNEG</span><span class="archive-role">Production Supervisor / Project Manager</span></div>
+                <div class="archive-item"><span class="archive-company">ALZAHRA VFX</span><span class="archive-role">Project Delivery Manager</span></div>
+                <div class="archive-item"><span class="archive-company">HOOP VFX</span><span class="archive-role">VFX Line Producer</span></div>
+                <div class="archive-item"><span class="archive-company">MINTE ANIMATION STUDIO</span><span class="archive-role">Production Manager</span></div>
+                <div class="archive-item"><span class="archive-company">REGH ANIMATION</span><span class="archive-role">Production Coordinator</span></div>
+                <div class="archive-item"><span class="archive-company">GELAROGRACE STUDIO</span><span class="archive-role">Production Coordinator / Shoot Supervisor</span></div>
+                <div class="archive-item"><span class="archive-company">UNIFI MEDIA</span><span class="archive-role">Production Coordinator</span></div>
+                <div class="archive-item"><span class="archive-company">PRANA STUDIO</span><span class="archive-role">VFX Artist</span></div>
+                <div class="archive-item"><span class="archive-company">PRIME FOCUS</span><span class="archive-role">Stereo Compositor</span></div>
+                <div class="archive-item"><span class="archive-company">DELUXE DIGI CAPTION</span><span class="archive-role">Roto 2nd Lead</span></div>
             </div>
         </div>
     </div>
