@@ -87,22 +87,25 @@
         .red-text { color: var(--tron-red); text-shadow: 0 0 10px var(--tron-red); }
 
         /* --- CREDIT HALL OF FAME --- */
-        .credit-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            list-style: none;
-            padding: 0;
-        }
+       /* Styling the links inside the credit items */
+.credit-item a {
+    text-decoration: none; /* Removes the underline */
+    color: #fff;           /* Keeps the text white */
+    display: block;        /* Makes the whole box clickable */
+    transition: 0.3s;
+}
 
-        .credit-item {
-            background: rgba(255, 0, 60, 0.1);
-            border: 1px solid var(--tron-red);
-            padding: 8px 15px;
-            font-family: 'Orbitron', ;
-            font-size: 0.8rem;
-            color: #fff;
-        }
+.credit-item a:hover {
+    color: var(--tron-red); /* Changes text to red on hover */
+    text-shadow: 0 0 10px var(--tron-red); /* Adds a neon glow */
+}
+
+/* Optional: Add a small icon or hint that it is a link */
+.credit-item::after {
+    content: ' 🔗';
+    font-size: 0.7rem;
+    opacity: 0.5;
+}
 
         .skill-tag {
             display: inline-block;
