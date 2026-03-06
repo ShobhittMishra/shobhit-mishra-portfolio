@@ -1,184 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-10">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shobhit Mishra | Professional Chronicles</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>Shobhit Mishra | AI & Project Hero</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --yellow: #ffde03;
-            --red: #e63946;
-            --blue: #005f73;
-            --black: #1d3557;
-            --border: 4px solid #000;
+            --tron-blue: #00f2ff;
+            --tron-red: #ff003c;
+            --tron-green: #00ff95;
+            --dark-bg: #05050a;
+            --panel-bg: rgba(0, 10, 20, 0.9);
         }
 
         body {
-            background-color: #f1faee;
-            background-image: radial-gradient(#ccc 1px, transparent 1px);
-            background-size: 25px 25px;
-            font-family: 'Open Sans', sans-serif;
+            background-color: var(--dark-bg);
+            background-image: 
+                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
             margin: 0;
             padding: 20px;
-            color: #1d3557;
         }
 
-        .container { max-width: 900px; margin: 0 auto; }
+        .container { max-width: 1100px; margin: 0 auto; }
 
-        header {
-            background: var(--yellow);
-            border: var(--border);
-            padding: 30px;
-            box-shadow: 10px 10px 0px #000;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        h1 { font-family: 'Bangers', cursive; font-size: 4rem; margin: 0; }
-        
-        .section-title {
-            font-family: 'Bangers', cursive;
-            font-size: 2.5rem;
-            background: var(--red);
-            color: white;
-            display: inline-block;
-            padding: 5px 20px;
-            transform: skew(-5deg);
-            margin-bottom: 20px;
-            border: var(--border);
-        }
-
-        .panel {
-            background: white;
-            border: var(--border);
-            padding: 25px;
-            box-shadow: 8px 8px 0px #000;
-            margin-bottom: 30px;
+        /* --- CONTACT HEADER --- */
+        .hero-card {
+            border: 2px solid var(--tron-blue);
+            padding: 40px;
             position: relative;
-        }
-
-        .current-role { border-color: var(--blue); border-width: 6px; }
-        .current-role::after {
-            content: "CURRENT MISSION";
-            position: absolute;
-            top: -15px; right: 20px;
-            background: var(--blue);
-            color: white;
-            font-family: 'Bangers', cursive;
-            padding: 5px 15px;
-            border: 3px solid #000;
-        }
-
-        h2 { font-family: 'Bangers', cursive; font-size: 1.8rem; margin: 0; color: var(--black); }
-        .job-meta { font-weight: bold; color: var(--red); margin-bottom: 15px; display: block; }
-        
-        .history-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .history-item {
-            background: #fff;
-            border: var(--border);
-            padding: 15px;
-            box-shadow: 5px 5px 0px #000;
-        }
-
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
-
-        .footer-signal {
+            box-shadow: 0 0 20px var(--tron-blue);
+            margin-bottom: 30px;
+            background: var(--panel-bg);
             text-align: center;
-            margin-top: 50px;
-            background: var(--yellow);
-            padding: 30px;
-            border: var(--border);
-            box-shadow: 8px 8px 0px #000;
         }
 
-        @media (max-width: 768px) {
-            .history-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 2.5rem; }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin: 0;
+            color: var(--tron-blue);
+            text-shadow: 0 0 20px var(--tron-blue);
+            text-transform: uppercase;
         }
+
+        .contact-uplink {
+            margin-top: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--tron-green);
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item { border: 1px solid var(--tron-green); padding: 5px 15px; background: rgba(0, 255, 149, 0.1); }
+
+        .summary-box {
+            margin-top: 30px;
+            padding: 20px;
+            border-left: 4px solid var(--tron-blue);
+            background: rgba(0, 242, 255, 0.05);
+            text-align: left;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* --- GRID PANELS --- */
+        .grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
+
+        .panel { background: var(--panel-bg); padding: 25px; position: relative; }
+
+        .blue-border { border: 1px solid var(--tron-blue); box-shadow: 0 0 15px rgba(0, 242, 255, 0.3); }
+        .green-border { border: 1px solid var(--tron-green); box-shadow: 0 0 15px rgba(0, 255, 149, 0.3); }
+        .red-border { border: 2px solid var(--tron-red); box-shadow: 0 0 20px rgba(255, 0, 60, 0.4); }
+
+        h2 { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; margin-bottom: 15px; letter-spacing: 2px; }
+        .blue-text { color: var(--tron-blue); }
+        .green-text { color: var(--tron-green); }
+        .red-text { color: var(--tron-red); text-shadow: 0 0 10px var(--tron-red); }
+
+        /* --- CREDIT HALL OF FAME --- */
+        .credit-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .credit-item {
+            background: rgba(255, 0, 60, 0.1);
+            border: 1px solid var(--tron-red);
+            padding: 8px 15px;
+            font-family: 'Orbitron', ;
+            font-size: 0.8rem;
+            color: #fff;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            border: 1px solid var(--tron-green);
+            padding: 5px 12px;
+            margin: 5px;
+            font-size: 0.8rem;
+            color: var(--tron-green);
+        }
+
+        .btn-link {
+            display: block;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            border: 2px solid var(--tron-blue);
+            color: var(--tron-blue);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            transition: 0.3s;
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        .btn-link:hover { background: var(--tron-blue); color: #000; box-shadow: 0 0 40px var(--tron-blue); }
+
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } .contact-uplink { flex-direction: column; gap: 10px; } }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
+    <header class="hero-card">
         <h1>SHOBHIT MISHRA</h1>
-        <p><strong>13+ Years of Experience | AI, SaaS, LMS & VFX Specialist</strong></p>
+        
+        <div class="contact-uplink">
+            <span class="contact-item">📞 +91 8451935845</span>
+            <span class="contact-item">📧 shobhitvfx@gmail.com</span>
+            <span class="contact-item">📍 PUNE, MH</span>
+        </div>
+
+        <div class="summary-box">
+            <strong class="blue-text">EXECUTIVE SUMMARY:</strong><br>
+            Results-driven professional with <strong>13 years of experience</strong> across Agile, Scrum, SaaS, and Generative AI platforms. 
+            Proven expertise in project lifecycle management, stakeholder engagement, and risk mitigation. 
+            A specialist in <strong>AI-driven content management</strong> and <strong>VR learning solutions</strong> with a foundation in world-class VFX production.
+        </div>
     </header>
 
-    <div class="section-title">The Current Mission</div>
-    
-    <div class="panel current-role">
-        <h2>Squadra Media | Senior Project Manager (AI / SaaS / LMS)</h2>
-        <span class="job-meta">09/2025 - Present | Bengaluru</span>
-        <ul>
-            <li>Led client management for SaaS-based LMS platforms, aligning technical solutions with enterprise requirements[cite: 31].</li>
-            <li>Managed the LMS platform supporting 21,000+ active users, ensuring performance and reliability[cite: 36].</li>
-            <li>Led Generative AI-enabled content management and VR-enabled learning implementations[cite: 38, 39].</li>
-            <li>Collaborated with engineering, QA, and DevOps to manage release cycles and production readiness[cite: 40].</li>
-        </ul>
-    </div>
-
-    <div class="section-title">Past Chronicles</div>
-
-    <div class="history-grid">
-        <div class="history-item">
-            <h2>DNEG</h2>
-            <span class="job-meta">Production Supervisor / Project Manager</span>
-            <p>Managed high-end digital projects, coordinating information flow between artists and departments[cite: 45, 47].</p>
+    <div class="grid">
+        <div class="panel blue-border">
+            <h2 class="blue-text">CURRENT MISSION: SQUADRA MEDIA</h2>
+            <p style="font-weight: bold; color: var(--tron-blue);">Senior Project Manager (AI/SaaS/LMS) | 2025 - Present</p>
+            <ul style="padding-left: 20px; opacity: 0.9; line-height: 1.6;">
+                <li>Managing enterprise LMS architecture for <strong>21,000+ active users</strong>.</li>
+                <li>Pioneering <strong>Generative AI integration</strong> for content personalization and intelligent training workflows.</li>
+                <li>Orchestrating end-to-end delivery of <strong>VR-enabled learning modules</strong> for immersive simulations.</li>
+            </ul>
         </div>
 
-        <div class="history-item">
-            <h2>Alzahra VFX</h2>
-            <span class="job-meta">Project Delivery Manager</span>
-            <p>Facilitated Scrum ceremonies and promoted agile practices for cross-functional teams[cite: 53, 58].</p>
+        <div class="panel green-border">
+            <h2 class="green-text">TECH ARSENAL</h2>
+            <div class="skill-tag">Generative AI</div>
+            <div class="skill-tag">Prompt Engineering</div>
+            <div class="skill-tag">Certified Scrum Master</div>
+            <div class="skill-tag">ShotGrid / SyncSketch</div>
+            <div class="skill-tag">SaaS Architecture</div>
+            <div class="skill-tag">Stakeholder Management</div>
         </div>
 
-        <div class="history-item">
-            <h2>Hoop VFX</h2>
-            <span class="job-meta">VFX Line Producer</span>
-            <p>Managed client relationships and project planning to ensure timely delivery and budget adherence[cite: 61, 62].</p>
+        <div class="panel red-border" style="grid-column: 1 / -1;">
+            <h2 class="red-text">PRODUCTION CREDITS // HALL OF FAME</h2>
+            <ul class="credit-list">
+                <li class="credit-item">GAME OF THRONES (S6 E9)</li>
+                <li class="credit-item">Jurassic World 2015 </li>
+                <li class="credit-item">MIRZYA</li>
+                <li class="credit-item">THE LOST TOMB</li>
+                <li class="credit-item">BRAHMASTRA </li>
+                <li class="credit-item">FATEH </li>
+            </ul>
         </div>
 
-        <div class="history-item">
-            <h2>DNEG (Earlier)</h2>
-            <span class="job-meta">Line Producer</span>
-            <p>Facilitated daily scrums and managed resource planning and conflict resolution[cite: 65, 66, 68].</p>
-        </div>
-
-        <div class="history-item">
-            <h2>Minte Animation Studio</h2>
-            <span class="job-meta">Production Manager</span>
-            <p>Oversaw project epics and supported onboarding/coaching for new team members[cite: 70, 73, 75].</p>
-        </div>
-
-        <div class="history-item">
-            <h2>Regh Animation</h2>
-            <span class="job-meta">Production Coordinator</span>
-            <p>Coordinated projects and managed daily reporting[cite: 76, 78].</p>
+        <div class="panel blue-border" style="grid-column: 1 / -1;">
+            <h2 class="blue-text">CHRONICLE ARCHIVE (VFX & PROJECT MGMT)</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; opacity: 0.8; font-size: 0.9rem;">
+                <div><strong>DNEG</strong><br>Production Supervisor</div>
+                <div><strong>ALZAHRA VFX</strong><br>Project Delivery Manager</div>
+                <div><strong>HOOP VFX</strong><br>VFX Line Producer</div>
+                <div><strong>PRANA STUDIO</strong><br>VFX Artist</div>
+                <div><strong>PRIME FOCUS</strong><br>Stereo Compositor</div>
+            </div>
         </div>
     </div>
 
-    <div class="panel" style="margin-top: 30px;">
-        <h2>Early Career & Artistic Roots</h2>
-        <p><strong>Gelarograce Studio:</strong> Production Coordinator / Shoot Supervisor [cite: 79, 80]</p>
-        <p><strong>Unifi Media:</strong> Production Coordinator [cite: 85, 86]</p>
-        <p><strong>PRANA Studio:</strong> VFX Roto / Paint Artist [cite: 88, 89]</p>
-        <p><strong>Prime Focus:</strong> Paint Artist & Stereo Compositor [cite: 95, 106]</p>
-        <p><strong>Deluxe Digi Caption:</strong> Roto 2nd Lead [cite: 100, 101]</p>
-    </div>
-
-    <div class="footer-signal">
-        <h2>REACH OUT FOR THE NEXT ADVENTURE!</h2>
-        <p>Email: shobhitvfx@gmail.com | Phone: +91 8451935845</p>
-        <p>Pune, Maharashtra</p>
-    </div>
+    <a href="mailto:shobhitvfx@gmail.com" class="btn-link">SEND TRANSMISSION</a>
 </div>
 
 </body>
