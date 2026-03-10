@@ -7,549 +7,454 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy:    #0d1b2a;
-  --navy2:   #132234;
-  --navy3:   #1a2e45;
-  --slate:   #2c4a6e;
-  --gold:    #c9a84c;
-  --gold2:   #e8c97a;
-  --silver:  #8fa8c8;
-  --ice:     #d4e4f7;
-  --white:   #f4f8fc;
-  --muted:   #6b8aaa;
-  --border:  #1f3652;
-  --border2: #2a4a6a;
-  --text:    #e8f0f8;
-  --dim:     #4a6a8a;
+  --navy:   #0d1b2a;
+  --navy2:  #132234;
+  --gold:   #c9a84c;
+  --gold2:  #e8c97a;
+  --silver: #8fa8c8;
+  --ice:    #d4e4f7;
+  --white:  #f4f8fc;
+  --muted:  #6b8aaa;
+  --border: #1f3652;
+  --border2:#2a4a6a;
+  --dim:    #4a6a8a;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 
-body {
-  background: var(--navy);
-  color: var(--text);
-  font-family: 'Barlow', sans-serif;
-  font-weight: 300;
-  overflow-x: hidden;
+body{
+  background:var(--navy);
+  color:var(--white);
+  font-family:'Barlow',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
 }
 
-/* ─── GRID LINES background ─── */
-body::before {
-  content: '';
-  position: fixed; inset: 0;
+/* subtle grid bg */
+body::before{
+  content:'';position:fixed;inset:0;
   background-image:
-    linear-gradient(rgba(100,160,220,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(100,160,220,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none; z-index: 0;
+    linear-gradient(rgba(100,160,220,0.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(100,160,220,0.035) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;z-index:0;
 }
 
-/* ─── NAV ─── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 200; padding: 0;
-  border-bottom: 1px solid transparent;
-  transition: all 0.35s;
+/* ── NAV ─────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:60px;border-bottom:1px solid transparent;
+  transition:background .3s,border-color .3s;
 }
-nav.scrolled {
-  background: rgba(13,27,42,0.97);
-  border-color: var(--border);
-  backdrop-filter: blur(16px);
+nav.scrolled{
+  background:rgba(13,27,42,.97);
+  border-color:var(--border);
+  backdrop-filter:blur(16px);
 }
-.nav-inner {
-  max-width: 1200px; margin: 0 auto;
-  padding: 0 48px;
-  display: flex; align-items: stretch;
-  height: 64px;
+.nav-inner{
+  max-width:1200px;margin:0 auto;padding:0 40px;
+  height:100%;display:flex;align-items:center;
 }
-.nav-logo {
-  display: flex; align-items: center; gap: 14px;
-  text-decoration: none; margin-right: auto;
+.nav-brand{
+  display:flex;align-items:center;gap:12px;
+  text-decoration:none;margin-right:auto;
 }
-.nav-logo-mark {
-  width: 36px; height: 36px;
-  background: var(--gold);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem; font-weight: 700;
-  color: var(--navy); flex-shrink: 0;
+.nav-mark{
+  width:34px;height:34px;background:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:.95rem;
+  font-weight:700;color:var(--navy);flex-shrink:0;
 }
-.nav-logo-text {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.8rem; font-weight: 500;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--ice); line-height: 1.3;
+.nav-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.78rem;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ice);line-height:1.4;
 }
-.nav-logo-text span {
-  display: block; font-weight: 300;
-  font-size: 0.65rem; color: var(--muted);
-  letter-spacing: 0.25em;
+.nav-name span{
+  display:block;font-weight:300;font-size:.62rem;
+  color:var(--muted);letter-spacing:.22em;
 }
-.nav-links {
-  display: flex; list-style: none;
-  border-left: 1px solid var(--border);
+.nav-links{display:flex;list-style:none;gap:2px;}
+.nav-links a{
+  display:flex;align-items:center;height:40px;padding:0 20px;
+  font-family:'Barlow Condensed',sans-serif;font-size:.68rem;
+  font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  border:1px solid transparent;transition:all .2s;
 }
-.nav-links li { border-right: 1px solid var(--border); }
-.nav-links a {
-  display: flex; align-items: center;
-  padding: 0 24px; height: 100%;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.72rem; font-weight: 500;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--muted); text-decoration: none;
-  transition: all 0.2s; position: relative;
-}
-.nav-links a::after {
-  content: ''; position: absolute;
-  bottom: 0; left: 0; right: 100%;
-  height: 2px; background: var(--gold);
-  transition: right 0.3s ease;
-}
-.nav-links a:hover { color: var(--gold); background: rgba(201,168,76,0.04); }
-.nav-links a:hover::after { right: 0; }
+.nav-links a:hover{color:var(--gold);border-color:var(--border2);}
 
-/* ─── HERO ─── */
-.hero {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  grid-template-rows: auto;
-  border-bottom: 1px solid var(--border);
-  position: relative; z-index: 1;
-  padding-top: 64px;
+/* ── HERO ────────────────────────────── */
+.hero{
+  padding-top:60px; /* nav height */
+  display:flex;
+  min-height:100vh;
+  position:relative;z-index:1;
+  border-bottom:1px solid var(--border);
 }
+.hero-left{
+  flex:1;
+  padding:72px 56px 72px 40px;
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;justify-content:center;
+}
+.hero-right{
+  width:360px;flex-shrink:0;
+  display:flex;flex-direction:column;
+}
+.eyebrow{
+  display:flex;align-items:center;gap:14px;margin-bottom:28px;
+  opacity:0;animation:fadeUp .6s .2s ease forwards;
+}
+.eyebrow-line{width:36px;height:1px;background:var(--gold);}
+.eyebrow-text{
+  font-family:'Barlow Condensed',sans-serif;font-size:.66rem;
+  font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);
+}
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,4.5vw,4.6rem);
+  font-weight:700;line-height:1.06;color:var(--white);
+  opacity:0;animation:fadeUp .7s .35s ease forwards;
+}
+h1 .gold{color:var(--gold);}
+.subtitle{
+  margin-top:16px;
+  font-family:'Barlow Condensed',sans-serif;font-size:.9rem;
+  font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--silver);
+  opacity:0;animation:fadeUp .7s .5s ease forwards;
+}
+.hero-rule{
+  width:52px;height:2px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  margin:28px 0;
+  opacity:0;animation:fadeUp .7s .6s ease forwards;
+}
+.hero-desc{
+  font-size:.9rem;line-height:1.9;color:var(--silver);max-width:520px;
+  opacity:0;animation:fadeUp .7s .7s ease forwards;
+}
+.hero-desc strong{color:var(--ice);font-weight:500;}
+.hero-btns{
+  margin-top:38px;display:flex;gap:14px;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .7s .85s ease forwards;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 28px;
+  font-family:'Barlow Condensed',sans-serif;font-size:.72rem;
+  font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  text-decoration:none;transition:all .25s;border:none;cursor:pointer;
+}
+.btn-gold{background:var(--gold);color:var(--navy);}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,.35);}
+.btn-outline{border:1px solid var(--border2);color:var(--silver);background:transparent;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
 
-.hero-left {
-  padding: 80px 48px 80px 48px;
-  border-right: 1px solid var(--border);
-  display: flex; flex-direction: column; justify-content: center;
-  max-width: 760px;
+/* KPI blocks */
+.kpi-block{
+  flex:1;padding:32px 28px;
+  border-bottom:1px solid var(--border);
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;
+  transition:background .3s;
+  opacity:0;animation:fadeIn 1s 1s ease forwards;
 }
-.hero-eyebrow {
-  display: flex; align-items: center; gap: 16px;
-  margin-bottom: 32px;
-  opacity: 0; animation: fadeUp 0.7s 0.2s ease forwards;
+.kpi-block:last-child{border-bottom:none;}
+.kpi-block::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--gold);opacity:0;transition:opacity .3s;
 }
-.hero-eyebrow-line { width: 40px; height: 1px; background: var(--gold); }
-.hero-eyebrow-text {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.7rem; font-weight: 600;
-  letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--gold);
+.kpi-block:hover{background:rgba(201,168,76,.03);}
+.kpi-block:hover::before{opacity:1;}
+.kpi-label{
+  font-family:'Barlow Condensed',sans-serif;font-size:.62rem;
+  font-weight:600;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:10px;
 }
+.kpi-val{
+  font-family:'Playfair Display',serif;font-size:2.4rem;
+  font-weight:700;color:var(--white);line-height:1;
+}
+.kpi-val em{color:var(--gold);font-style:normal;}
+.kpi-note{font-size:.7rem;color:var(--muted);margin-top:8px;line-height:1.5;}
 
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(3.2rem, 5.5vw, 5rem);
-  font-weight: 700; line-height: 1.05;
-  color: var(--white);
-  opacity: 0; animation: fadeUp 0.8s 0.35s ease forwards;
-}
-h1 .last { color: var(--gold); display: block; }
+/* ── SECTIONS ────────────────────────── */
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+section{border-bottom:1px solid var(--border);position:relative;z-index:1;}
 
-.hero-title-sub {
-  margin-top: 20px;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1rem; font-weight: 400;
-  letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--silver);
-  opacity: 0; animation: fadeUp 0.8s 0.5s ease forwards;
+.sec-head{
+  display:grid;grid-template-columns:200px 1fr;
+  border-bottom:1px solid var(--border);
 }
-
-.hero-divider {
-  width: 60px; height: 2px;
-  background: linear-gradient(90deg, var(--gold), transparent);
-  margin: 32px 0;
-  opacity: 0; animation: fadeUp 0.8s 0.6s ease forwards;
+.sec-num{
+  padding:36px 32px 36px 0;border-right:1px solid var(--border);
+  font-family:'Playfair Display',serif;font-size:3.6rem;
+  font-weight:700;color:var(--border2);
+  display:flex;align-items:center;
 }
-
-.hero-summary {
-  font-size: 0.95rem; line-height: 1.9;
-  color: var(--silver); max-width: 560px;
-  opacity: 0; animation: fadeUp 0.8s 0.7s ease forwards;
+.sec-title{
+  padding:36px 0 36px 36px;
+  display:flex;flex-direction:column;justify-content:center;
 }
-.hero-summary strong { color: var(--ice); font-weight: 500; }
-
-.hero-actions {
-  margin-top: 44px; display: flex; gap: 16px;
-  opacity: 0; animation: fadeUp 0.8s 0.85s ease forwards;
+.sec-tag{
+  font-family:'Barlow Condensed',sans-serif;font-size:.62rem;
+  font-weight:600;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:6px;
 }
-.btn {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 13px 32px;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.75rem; font-weight: 600;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  text-decoration: none;
-  transition: all 0.25s; border: none; cursor: pointer;
-}
-.btn-gold {
-  background: var(--gold); color: var(--navy);
-}
-.btn-gold:hover { background: var(--gold2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
-.btn-outline {
-  border: 1px solid var(--border2); color: var(--silver);
-  background: transparent;
-}
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-
-/* Hero right — KPI panel */
-.hero-right {
-  display: flex; flex-direction: column;
-  opacity: 0; animation: fadeIn 1s 1s ease forwards;
-}
-.kpi-block {
-  flex: 1; padding: 36px 32px;
-  border-bottom: 1px solid var(--border);
-  display: flex; flex-direction: column; justify-content: center;
-  transition: background 0.3s;
-  position: relative; overflow: hidden;
-}
-.kpi-block::before {
-  content: ''; position: absolute;
-  left: 0; top: 0; bottom: 0; width: 3px;
-  background: var(--gold); opacity: 0;
-  transition: opacity 0.3s;
-}
-.kpi-block:hover { background: rgba(201,168,76,0.03); }
-.kpi-block:hover::before { opacity: 1; }
-.kpi-block:last-child { border-bottom: none; }
-.kpi-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.65rem; font-weight: 600;
-  letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--dim); margin-bottom: 10px;
-}
-.kpi-value {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.6rem; font-weight: 700;
-  color: var(--white); line-height: 1;
-}
-.kpi-value em { color: var(--gold); font-style: normal; }
-.kpi-desc {
-  font-size: 0.72rem; color: var(--muted);
-  margin-top: 8px; line-height: 1.6;
+h2{
+  font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.5vw,2.2rem);
+  font-weight:600;color:var(--white);line-height:1.2;
 }
 
-/* ─── SECTION STRUCTURE ─── */
-.section-wrap {
-  max-width: 1200px; margin: 0 auto;
-  padding: 0 48px; position: relative; z-index: 1;
+/* ── COMPETENCIES ────────────────────── */
+.comp-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
 }
-section { border-bottom: 1px solid var(--border); }
-
-.section-header {
-  display: grid; grid-template-columns: 240px 1fr;
-  gap: 0; border-bottom: 1px solid var(--border);
-  margin-bottom: 0;
+.comp-cell{
+  padding:36px 32px;
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  transition:background .2s;
 }
-.section-num {
-  padding: 40px 40px 40px 0;
-  border-right: 1px solid var(--border);
-  font-family: 'Playfair Display', serif;
-  font-size: 4rem; font-weight: 700;
-  color: var(--border2); line-height: 1;
-  display: flex; align-items: center;
+.comp-cell:nth-child(3n){border-right:none;}
+.comp-cell:nth-last-child(-n+3){border-bottom:none;}
+.comp-cell:hover{background:rgba(201,168,76,.03);}
+.comp-icon{font-size:1.4rem;margin-bottom:16px;}
+.comp-name{
+  font-family:'Barlow Condensed',sans-serif;font-size:.78rem;
+  font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ice);margin-bottom:10px;
 }
-.section-title-block {
-  padding: 40px 0 40px 40px;
-  display: flex; flex-direction: column; justify-content: center;
-}
-.section-tag {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.65rem; font-weight: 600;
-  letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 8px;
-}
-h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.9rem; font-weight: 600;
-  color: var(--white); line-height: 1.2;
+.comp-desc{font-size:.78rem;line-height:1.8;color:var(--muted);}
+.comp-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;}
+.ctag{
+  font-family:'Barlow Condensed',sans-serif;font-size:.6rem;
+  font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--dim);padding:3px 8px;border:1px solid var(--border);
 }
 
-/* ─── CORE COMPETENCIES ─── */
-.competencies-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--border);
+/* ── EXPERIENCE ──────────────────────── */
+.exp-layout{display:grid;grid-template-columns:220px 1fr;}
+.exp-tabs{border-right:1px solid var(--border);}
+.exp-tab{
+  padding:22px 24px;border-bottom:1px solid var(--border);
+  cursor:pointer;transition:all .2s;position:relative;
 }
-.comp-item {
-  padding: 40px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  transition: background 0.25s;
-  position: relative;
+.exp-tab::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--gold);opacity:0;transition:opacity .2s;
 }
-.comp-item:nth-child(3n) { border-right: none; }
-.comp-item:hover { background: rgba(201,168,76,0.03); }
-.comp-icon {
-  width: 44px; height: 44px;
-  border: 1px solid var(--border2);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.3rem; margin-bottom: 20px;
-  transition: border-color 0.25s;
+.exp-tab:hover{background:rgba(201,168,76,.03);}
+.exp-tab.on{background:rgba(201,168,76,.05);}
+.exp-tab.on::before{opacity:1;}
+.exp-co{
+  font-family:'Barlow Condensed',sans-serif;font-size:.76rem;
+  font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ice);margin-bottom:3px;transition:color .2s;
 }
-.comp-item:hover .comp-icon { border-color: var(--gold); }
-.comp-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.82rem; font-weight: 600;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--ice); margin-bottom: 12px;
+.exp-tab.on .exp-co{color:var(--gold);}
+.exp-per{font-size:.62rem;color:var(--dim);letter-spacing:.08em;}
+.exp-body{padding:44px 40px;}
+.exp-panel{display:none;}
+.exp-panel.on{display:block;}
+.exp-role{
+  font-family:'Playfair Display',serif;font-size:1.5rem;
+  font-weight:600;color:var(--white);margin-bottom:4px;
 }
-.comp-desc {
-  font-size: 0.78rem; line-height: 1.8;
-  color: var(--muted);
+.exp-sub{
+  font-family:'Barlow Condensed',sans-serif;font-size:.72rem;
+  font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:24px;
+  display:flex;align-items:center;gap:10px;
 }
-.comp-tags {
-  display: flex; flex-wrap: wrap; gap: 6px;
-  margin-top: 16px;
+.exp-sub::after{content:'';flex:0 0 36px;height:1px;background:var(--border2);}
+.exp-kpis{
+  display:flex;border:1px solid var(--border);margin-bottom:28px;
 }
-.comp-tag {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.62rem; font-weight: 500;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--dim); padding: 3px 8px;
-  border: 1px solid var(--border); border-radius: 2px;
+.exp-kpi{flex:1;padding:16px 20px;border-right:1px solid var(--border);text-align:center;}
+.exp-kpi:last-child{border-right:none;}
+.exp-kpi-v{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--gold);}
+.exp-kpi-l{font-size:.6rem;color:var(--dim);margin-top:3px;letter-spacing:.08em;}
+.exp-pts{list-style:none;}
+.exp-pts li{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:11px 0;border-bottom:1px solid var(--border);
+  font-size:.8rem;line-height:1.75;color:var(--silver);
 }
-
-/* ─── EXPERIENCE ─── */
-.exp-layout {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-}
-.exp-sidebar {
-  border-right: 1px solid var(--border);
-  padding: 0;
-}
-.exp-tab {
-  padding: 28px 32px;
-  border-bottom: 1px solid var(--border);
-  cursor: pointer;
-  transition: all 0.2s;
-  position: relative;
-}
-.exp-tab::before {
-  content: ''; position: absolute;
-  left: 0; top: 0; bottom: 0; width: 3px;
-  background: var(--gold); opacity: 0; transition: opacity 0.2s;
-}
-.exp-tab.active { background: rgba(201,168,76,0.05); }
-.exp-tab.active::before { opacity: 1; }
-.exp-tab-company {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.78rem; font-weight: 600;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--ice); margin-bottom: 4px;
-  transition: color 0.2s;
-}
-.exp-tab.active .exp-tab-company { color: var(--gold); }
-.exp-tab-period {
-  font-size: 0.65rem; color: var(--dim);
-  letter-spacing: 0.08em;
-}
-.exp-content { padding: 48px; }
-.exp-panel { display: none; }
-.exp-panel.active { display: block; }
-.exp-role-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem; font-weight: 600;
-  color: var(--white); margin-bottom: 4px;
-}
-.exp-role-sub {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.75rem; font-weight: 500;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 28px;
-  display: flex; align-items: center; gap: 12px;
-}
-.exp-role-sub::after {
-  content: ''; flex: 0 0 40px; height: 1px; background: var(--border2);
-}
-.exp-kpis {
-  display: flex; gap: 0;
-  border: 1px solid var(--border);
-  margin-bottom: 32px;
-}
-.exp-kpi {
-  flex: 1; padding: 20px 24px;
-  border-right: 1px solid var(--border);
-  text-align: center;
-}
-.exp-kpi:last-child { border-right: none; }
-.exp-kpi-val {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem; font-weight: 700; color: var(--gold);
-}
-.exp-kpi-lbl { font-size: 0.62rem; color: var(--dim); margin-top: 4px; letter-spacing: 0.1em; }
-
-.exp-points { list-style: none; }
-.exp-points li {
-  display: flex; gap: 16px; align-items: flex-start;
-  padding: 12px 0; border-bottom: 1px solid var(--border);
-  font-size: 0.82rem; line-height: 1.7; color: var(--silver);
-}
-.exp-points li:last-child { border-bottom: none; }
-.exp-points li::before {
-  content: '›'; color: var(--gold); font-size: 1.1rem;
-  flex-shrink: 0; margin-top: 1px; font-weight: 600;
+.exp-pts li:last-child{border-bottom:none;}
+.exp-pts li::before{
+  content:'›';color:var(--gold);font-size:1rem;
+  flex-shrink:0;font-weight:700;margin-top:1px;
 }
 
-/* ─── CERTIFICATIONS & ACHIEVEMENTS ─── */
-.certs-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
+/* ── CREDENTIALS ─────────────────────── */
+.cred-certs{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  border-bottom:1px solid var(--border);
 }
-.cert-col { border-right: 1px solid var(--border); }
-.cert-col:last-child { border-right: none; }
-.cert-col-title {
-  padding: 28px 40px;
-  border-bottom: 1px solid var(--border);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.7rem; font-weight: 600;
-  letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--gold);
+.cred-cert-col{border-right:1px solid var(--border);}
+.cred-cert-col:last-child{border-right:none;}
+.col-head{
+  padding:20px 32px;border-bottom:1px solid var(--border);
+  font-family:'Barlow Condensed',sans-serif;font-size:.62rem;
+  font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
 }
-.cert-row {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 16px; padding: 22px 40px;
-  border-bottom: 1px solid var(--border);
-  transition: background 0.2s;
+.cert-row{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:18px 32px;border-bottom:1px solid var(--border);
+  transition:background .2s;
 }
-.cert-row:last-child { border-bottom: none; }
-.cert-row:hover { background: rgba(201,168,76,0.03); }
-.cert-name { font-size: 0.82rem; color: var(--ice); font-weight: 400; }
-.cert-link {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.65rem; font-weight: 600;
-  letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--gold); text-decoration: none;
-  padding: 6px 14px; border: 1px solid var(--border2);
-  transition: all 0.2s; white-space: nowrap;
+.cert-row:last-child{border-bottom:none;}
+.cert-row:hover{background:rgba(201,168,76,.03);}
+.cert-name{font-size:.8rem;color:var(--ice);font-weight:400;line-height:1.4;}
+.cert-link{
+  font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  padding:6px 12px;border:1px solid var(--border2);white-space:nowrap;
+  transition:all .2s;flex-shrink:0;
 }
-.cert-link:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
-.achievement-row {
-  display: flex; align-items: center; gap: 16px;
-  padding: 22px 40px; border-bottom: 1px solid var(--border);
-  font-size: 0.82rem; color: var(--ice);
-  transition: background 0.2s;
-}
-.achievement-row:last-child { border-bottom: none; }
-.achievement-row:hover { background: rgba(201,168,76,0.03); }
-.achievement-badge {
-  width: 8px; height: 8px; background: var(--gold);
-  border-radius: 50%; flex-shrink: 0;
-}
-/* Override padding for inline-style achievement rows inside the 3-col grid */
-.certs-grid-3 .achievement-row { padding: 16px 0; }
+.cert-link:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);}
 
-/* ─── CONTACT ─── */
-.contact-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
+/* Credits 3-col */
+.credits-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
 }
-.contact-left {
-  padding: 56px 48px; border-right: 1px solid var(--border);
+.cred-col{border-right:1px solid var(--border);}
+.cred-col:last-child{border-right:none;}
+.cred-col-head{
+  padding:20px 32px;border-bottom:1px solid var(--border);
+  font-family:'Barlow Condensed',sans-serif;font-size:.62rem;
+  font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
 }
-.contact-intro {
-  font-size: 0.88rem; line-height: 1.9;
-  color: var(--silver); margin-bottom: 40px;
+.credit-row{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:16px 32px;border-bottom:1px solid var(--border);
+  transition:background .2s;
 }
-.contact-right { padding: 56px 48px; }
-.contact-item {
-  display: flex; align-items: flex-start; gap: 20px;
-  padding: 22px 0; border-bottom: 1px solid var(--border);
+.credit-row:last-child{border-bottom:none;}
+.credit-row:hover{background:rgba(201,168,76,.03);}
+.cr-dot{
+  width:7px;height:7px;background:var(--gold);
+  border-radius:50%;flex-shrink:0;margin-top:5px;
 }
-.contact-item:last-child { border-bottom: none; }
-.contact-item-icon {
-  width: 38px; height: 38px; border: 1px solid var(--border2);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.9rem; flex-shrink: 0;
+.cr-title{font-size:.8rem;color:var(--ice);font-weight:500;margin-bottom:2px;}
+.cr-sub{font-size:.66rem;color:var(--dim);margin-bottom:4px;}
+.cr-link{
+  font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;transition:color .2s;
 }
-.contact-item-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.62rem; font-weight: 600;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--dim); margin-bottom: 4px;
-}
-.contact-item-value {
-  font-size: 0.82rem; color: var(--ice);
-  text-decoration: none; transition: color 0.2s;
-}
-a.contact-item-value:hover { color: var(--gold); }
+.cr-link:hover{color:var(--gold2);}
 
-/* ─── FOOTER ─── */
-footer {
-  position: relative; z-index: 1;
-  border-top: 1px solid var(--border);
+/* ad project button */
+.ad-btn{
+  display:inline-flex;align-items:center;gap:6px;margin-top:6px;
+  font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  padding:6px 12px;border:1px solid var(--border2);
+  transition:all .2s;
 }
-.footer-inner {
-  max-width: 1200px; margin: 0 auto; padding: 0 48px;
-  display: flex; align-items: stretch;
-  border-left: 1px solid var(--border); border-right: 1px solid var(--border);
-}
-.footer-left {
-  padding: 28px 0; flex: 1;
-  border-right: 1px solid var(--border);
-  font-size: 0.7rem; color: var(--dim); letter-spacing: 0.1em;
-}
-.footer-right {
-  padding: 28px 0 28px 48px;
-  font-size: 0.7rem; color: var(--dim);
-  display: flex; align-items: center;
-}
+.ad-btn:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);}
 
-/* ─── ANIMATIONS ─── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* education rows */
+.edu-row{
+  padding:18px 32px;border-bottom:1px solid var(--border);
 }
-@keyframes fadeIn {
-  from { opacity: 0; } to { opacity: 1; }
-}
-.reveal {
-  opacity: 0; transform: translateY(18px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal.visible { opacity: 1; transform: none; }
+.edu-row:last-child{border-bottom:none;}
+.edu-title{font-size:.8rem;color:var(--ice);font-weight:500;margin-bottom:3px;}
+.edu-sub{font-size:.68rem;color:var(--dim);}
 
-/* ─── RESPONSIVE ─── */
-@media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero-right { flex-direction: row; border-top: 1px solid var(--border); }
-  .kpi-block { border-right: 1px solid var(--border); border-bottom: none; }
-  .section-header { grid-template-columns: 1fr; }
-  .section-num { display: none; }
-  .section-title-block { padding: 32px 0; border-right: none; }
-  .competencies-grid { grid-template-columns: 1fr 1fr; }
-  .comp-item:nth-child(3n) { border-right: 1px solid var(--border); }
-  .comp-item:nth-child(2n) { border-right: none; }
-  .exp-layout { grid-template-columns: 1fr; }
-  .exp-sidebar { border-right: none; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; }
-  .certs-grid, .contact-grid { grid-template-columns: 1fr; }
-  .cert-col, .contact-left { border-right: none; border-bottom: 1px solid var(--border); }
-  .nav-inner { padding: 0 24px; }
-  .section-wrap { padding: 0 24px; }
-  .hero-left { padding: 60px 24px; }
+/* ── CONTACT ─────────────────────────── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;}
+.contact-left{
+  padding:52px 40px;border-right:1px solid var(--border);
 }
-@media (max-width: 600px) {
-  .competencies-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
-  h1 { font-size: 2.6rem; }
-  .exp-kpis { flex-direction: column; }
-  .exp-kpi { border-right: none; border-bottom: 1px solid var(--border); }
+.contact-right{padding:52px 40px;}
+.contact-intro{
+  font-size:.86rem;line-height:1.9;color:var(--silver);margin-bottom:32px;
+}
+.contact-intro strong{color:var(--ice);font-weight:500;}
+.contact-item{
+  display:flex;align-items:flex-start;gap:18px;
+  padding:18px 0;border-bottom:1px solid var(--border);
+}
+.contact-item:last-child{border-bottom:none;}
+.contact-icon{
+  width:36px;height:36px;border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;flex-shrink:0;
+}
+.contact-lbl{
+  font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:4px;
+}
+.contact-val{font-size:.8rem;color:var(--ice);text-decoration:none;transition:color .2s;}
+a.contact-val:hover{color:var(--gold);}
+
+/* ── FOOTER ──────────────────────────── */
+footer{
+  position:relative;z-index:1;
+  border-top:1px solid var(--border);
+}
+.foot-inner{
+  max-width:1200px;margin:0 auto;padding:24px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.foot-l,.foot-r{font-size:.68rem;color:var(--dim);letter-spacing:.1em;}
+
+/* ── ANIMATIONS ──────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.vis{opacity:1;transform:none;}
+
+/* ── RESPONSIVE ──────────────────────── */
+@media(max-width:900px){
+  .hero{flex-direction:column;}
+  .hero-left{border-right:none;padding:56px 24px 40px;}
+  .hero-right{width:100%;flex-direction:row;border-top:1px solid var(--border);}
+  .kpi-block{border-right:1px solid var(--border);border-bottom:none;}
+  .kpi-block:last-child{border-right:none;}
+  .sec-head{grid-template-columns:1fr;}
+  .sec-num{display:none;}
+  .sec-title{padding:28px 0;border-right:none;}
+  .comp-grid{grid-template-columns:1fr 1fr;}
+  .comp-cell:nth-child(3n){border-right:1px solid var(--border);}
+  .comp-cell:nth-child(2n){border-right:none;}
+  .exp-layout{grid-template-columns:1fr;}
+  .exp-tabs{border-right:none;border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;}
+  .cred-certs{grid-template-columns:1fr;}
+  .cred-cert-col{border-right:none;border-bottom:1px solid var(--border);}
+  .credits-grid{grid-template-columns:1fr;}
+  .cred-col{border-right:none;border-bottom:1px solid var(--border);}
+  .contact-grid{grid-template-columns:1fr;}
+  .contact-left{border-right:none;border-bottom:1px solid var(--border);}
+  .wrap{padding:0 20px;}
+}
+@media(max-width:600px){
+  .comp-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .hero-right{flex-direction:column;}
+  .kpi-block{border-right:none;border-bottom:1px solid var(--border);}
+  .exp-kpis{flex-direction:column;}
+  .exp-kpi{border-right:none;border-bottom:1px solid var(--border);}
+  .exp-kpi:last-child{border-bottom:none;}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ── NAV ─────────────────────────────── -->
 <nav id="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-logo">
-      <div class="nav-logo-mark">SM</div>
-      <div class="nav-logo-text">
-        Shobhit Mishra
-        <span>Senior Project Manager</span>
-      </div>
+    <a href="#" class="nav-brand">
+      <div class="nav-mark">SM</div>
+      <div class="nav-name">Shobhit Mishra<span>Senior Project Manager</span></div>
     </a>
     <ul class="nav-links">
       <li><a href="#competencies">Competencies</a></li>
@@ -560,20 +465,20 @@ footer {
   </div>
 </nav>
 
-<!-- ═══════════ HERO ═══════════ -->
-<div class="hero" style="position:relative;z-index:1;">
+<!-- ── HERO ─────────────────────────────── -->
+<div class="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      <div class="hero-eyebrow-text">Available for Senior PM Roles</div>
+    <div class="eyebrow">
+      <div class="eyebrow-line"></div>
+      <div class="eyebrow-text">Available for Senior PM Roles</div>
     </div>
-    <h1>Shobhit <span class="last">Mishra</span></h1>
-    <div class="hero-title-sub">Senior Project Manager &nbsp;·&nbsp; AI · SaaS · EdTech · VFX</div>
-    <div class="hero-divider"></div>
-    <p class="hero-summary">
-      Results-driven professional with <strong>13 years of experience</strong> delivering enterprise-scale projects across Agile, SaaS, LMS, EdTech, and Generative AI platforms. Proven track record in <strong>stakeholder management, sprint execution, risk mitigation</strong>, and cross-functional team leadership across India, UAE, and international studios. Holder of <strong>4 professional certifications</strong> including CSM, PMI M.O.R.E., Gen AI, and CDBA.
+    <h1>Shobhit<br><span class="gold">Mishra</span></h1>
+    <div class="subtitle">Senior Project Manager &nbsp;·&nbsp; AI · SaaS · EdTech · VFX</div>
+    <div class="hero-rule"></div>
+    <p class="hero-desc">
+      Results-driven professional with <strong>13 years of experience</strong> delivering enterprise-scale projects across Agile, SaaS, LMS, EdTech, and Generative AI platforms. Proven track record in <strong>stakeholder management, sprint execution, and risk mitigation</strong> across India, UAE, and international studios. Holder of <strong>4 professional certifications</strong> including CSM, PMI M.O.R.E., Gen AI, and CDBA.
     </p>
-    <div class="hero-actions">
+    <div class="hero-btns">
       <a href="#experience" class="btn btn-gold">View Experience</a>
       <a href="#contact" class="btn btn-outline">Get in Touch</a>
     </div>
@@ -582,181 +487,144 @@ footer {
   <div class="hero-right">
     <div class="kpi-block">
       <div class="kpi-label">Years of Experience</div>
-      <div class="kpi-value"><em>13</em></div>
-      <div class="kpi-desc">Spanning VFX production, SaaS, LMS &amp; EdTech platforms</div>
+      <div class="kpi-val"><em>13</em></div>
+      <div class="kpi-note">VFX production, SaaS, LMS &amp; EdTech platforms</div>
     </div>
     <div class="kpi-block">
       <div class="kpi-label">LMS Users Managed</div>
-      <div class="kpi-value"><em>21k</em>+</div>
-      <div class="kpi-desc">Active learners on enterprise SaaS platform at Squadra Media</div>
+      <div class="kpi-val"><em>21k</em>+</div>
+      <div class="kpi-note">Active learners on enterprise SaaS at Squadra Media</div>
     </div>
     <div class="kpi-block">
       <div class="kpi-label">Certifications</div>
-      <div class="kpi-value"><em>4</em></div>
-      <div class="kpi-desc">CSM · Gen AI PM · PMI M.O.R.E · PMI CDBA</div>
+      <div class="kpi-val"><em>4</em></div>
+      <div class="kpi-note">CSM · Gen AI PM · PMI M.O.R.E · PMI CDBA</div>
     </div>
     <div class="kpi-block">
       <div class="kpi-label">Industries</div>
-      <div class="kpi-value"><em>4</em></div>
-      <div class="kpi-desc">AI/SaaS · EdTech · VFX/Film · Animation &amp; Game Production</div>
+      <div class="kpi-val"><em>4</em></div>
+      <div class="kpi-note">AI/SaaS · EdTech · VFX/Film · Animation &amp; Game</div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════ CORE COMPETENCIES ═══════════ -->
-<section id="competencies" style="position:relative;z-index:1;">
-  <div class="section-wrap">
-    <div class="section-header reveal">
-      <div class="section-num">01</div>
-      <div class="section-title-block">
-        <div class="section-tag">Core Competencies</div>
+<!-- ── 01 COMPETENCIES ───────────────────── -->
+<section id="competencies">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">01</div>
+      <div class="sec-title">
+        <div class="sec-tag">Core Competencies</div>
         <h2>What I Bring to Every Project</h2>
       </div>
     </div>
-    <div class="competencies-grid">
-
-      <div class="comp-item reveal">
+    <div class="comp-grid">
+      <div class="comp-cell reveal">
         <div class="comp-icon">🤖</div>
-        <div class="comp-title">Generative AI & LMS</div>
-        <div class="comp-desc">Led AI-enabled content management initiatives including personalization, intelligent tagging, and VR-based immersive learning for 21,000+ users.</div>
+        <div class="comp-name">Generative AI &amp; LMS</div>
+        <div class="comp-desc">Led AI-enabled content management with personalization, intelligent tagging, and VR-based immersive learning for 21,000+ enterprise users.</div>
         <div class="comp-tags">
-          <span class="comp-tag">Gen AI</span>
-          <span class="comp-tag">Prompt Engineering</span>
-          <span class="comp-tag">VR Learning</span>
-          <span class="comp-tag">LMS</span>
+          <span class="ctag">Gen AI</span><span class="ctag">Prompt Engineering</span>
+          <span class="ctag">VR Learning</span><span class="ctag">LMS</span>
         </div>
       </div>
-
-      <div class="comp-item reveal">
+      <div class="comp-cell reveal">
         <div class="comp-icon">⚡</div>
-        <div class="comp-title">Agile / Scrum Delivery</div>
-        <div class="comp-desc">Certified Scrum Master with extensive experience in sprint planning, backlog prioritization, daily scrums, and iterative delivery in fast-paced SaaS environments.</div>
+        <div class="comp-name">Agile / Scrum Delivery</div>
+        <div class="comp-desc">Certified Scrum Master with hands-on expertise in sprint planning, backlog management, daily scrums, and iterative delivery at pace.</div>
         <div class="comp-tags">
-          <span class="comp-tag">Scrum</span>
-          <span class="comp-tag">Sprint Planning</span>
-          <span class="comp-tag">Backlog Mgmt</span>
-          <span class="comp-tag">Agile</span>
+          <span class="ctag">Scrum</span><span class="ctag">Sprint Planning</span>
+          <span class="ctag">Backlog Mgmt</span><span class="ctag">Agile</span>
         </div>
       </div>
-
-      <div class="comp-item reveal">
+      <div class="comp-cell reveal">
         <div class="comp-icon">🎯</div>
-        <div class="comp-title">Stakeholder Management</div>
-        <div class="comp-desc">Primary point of contact for enterprise clients — translating business requirements into scalable solutions and managing expectations across all delivery phases.</div>
+        <div class="comp-name">Stakeholder Management</div>
+        <div class="comp-desc">Primary point of contact for enterprise clients — translating business requirements into scalable solutions across all delivery phases.</div>
         <div class="comp-tags">
-          <span class="comp-tag">Client Relations</span>
-          <span class="comp-tag">Requirements</span>
-          <span class="comp-tag">Communication</span>
+          <span class="ctag">Client Relations</span><span class="ctag">Requirements</span>
+          <span class="ctag">Communication</span>
         </div>
       </div>
-
-      <div class="comp-item reveal">
+      <div class="comp-cell reveal">
         <div class="comp-icon">📊</div>
-        <div class="comp-title">Risk & Quality Management</div>
-        <div class="comp-desc">Proactively identifies blockers and dependencies. Monitors KPIs, SLAs, and delivery commitments with a structured approach to quality control and process improvement.</div>
+        <div class="comp-name">Risk &amp; Quality Management</div>
+        <div class="comp-desc">Proactively resolves blockers. Monitors KPIs, SLAs, and delivery commitments with structured quality control and process improvement.</div>
         <div class="comp-tags">
-          <span class="comp-tag">Risk Mitigation</span>
-          <span class="comp-tag">KPI Tracking</span>
-          <span class="comp-tag">SLA Management</span>
+          <span class="ctag">Risk Mitigation</span><span class="ctag">KPI Tracking</span>
+          <span class="ctag">SLA Management</span>
         </div>
       </div>
-
-      <div class="comp-item reveal">
+      <div class="comp-cell reveal">
         <div class="comp-icon">🎬</div>
-        <div class="comp-title">Production Management</div>
-        <div class="comp-desc">13-year background in CG, VFX, and 2D production management. Oversaw complex pipelines at DNEG, Hoop VFX, and top animation studios globally.</div>
+        <div class="comp-name">Production Management</div>
+        <div class="comp-desc">13-year background in CG, VFX, and 2D production management across DNEG, Hoop VFX, PRANA Studio, and top global animation studios.</div>
         <div class="comp-tags">
-          <span class="comp-tag">CG Production</span>
-          <span class="comp-tag">VFX</span>
-          <span class="comp-tag">ShotGrid</span>
-          <span class="comp-tag">SyncSketch</span>
+          <span class="ctag">CG Production</span><span class="ctag">VFX</span>
+          <span class="ctag">ShotGrid</span><span class="ctag">SyncSketch</span>
         </div>
       </div>
-
-      <div class="comp-item reveal">
+      <div class="comp-cell reveal">
         <div class="comp-icon">👥</div>
-        <div class="comp-title">Cross-Functional Leadership</div>
-        <div class="comp-desc">Leads and mentors cross-functional teams spanning product, engineering, QA, and DevOps. Conducts performance evaluations and drives collaborative team culture.</div>
+        <div class="comp-name">Cross-Functional Leadership</div>
+        <div class="comp-desc">Leads and mentors cross-functional teams across product, engineering, QA, and DevOps. Drives collaborative culture and high team performance.</div>
         <div class="comp-tags">
-          <span class="comp-tag">Team Mentoring</span>
-          <span class="comp-tag">Resource Planning</span>
-          <span class="comp-tag">Collaboration</span>
+          <span class="ctag">Team Mentoring</span><span class="ctag">Resource Planning</span>
+          <span class="ctag">Collaboration</span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════ EXPERIENCE ═══════════ -->
-<section id="experience" style="position:relative;z-index:1;">
-  <div class="section-wrap">
-    <div class="section-header reveal">
-      <div class="section-num">02</div>
-      <div class="section-title-block">
-        <div class="section-tag">Career History</div>
+<!-- ── 02 EXPERIENCE ─────────────────────── -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">02</div>
+      <div class="sec-title">
+        <div class="sec-tag">Career History</div>
         <h2>Professional Experience</h2>
       </div>
     </div>
     <div class="exp-layout">
-      <div class="exp-sidebar">
-        <div class="exp-tab active" onclick="switchExp(0)">
-          <div class="exp-tab-company">Squadra Media</div>
-          <div class="exp-tab-period">09/2025 – Present</div>
-        </div>
-        <div class="exp-tab" onclick="switchExp(1)">
-          <div class="exp-tab-company">DNEG</div>
-          <div class="exp-tab-period">04/2025 – 08/2025</div>
-        </div>
-        <div class="exp-tab" onclick="switchExp(2)">
-          <div class="exp-tab-company">Alzahra VFX</div>
-          <div class="exp-tab-period">12/2024</div>
-        </div>
-        <div class="exp-tab" onclick="switchExp(3)">
-          <div class="exp-tab-company">Hoop VFX</div>
-          <div class="exp-tab-period">03/2023 – 06/2024</div>
-        </div>
-        <div class="exp-tab" onclick="switchExp(4)">
-          <div class="exp-tab-company">DNEG (Line Producer)</div>
-          <div class="exp-tab-period">07/2021 – 03/2023</div>
-        </div>
-        <div class="exp-tab" onclick="switchExp(5)">
-          <div class="exp-tab-company">Early Career</div>
-          <div class="exp-tab-period">2012 – 2021</div>
-        </div>
+      <div class="exp-tabs">
+        <div class="exp-tab on"  onclick="setExp(0,this)"><div class="exp-co">Squadra Media</div><div class="exp-per">09/2025 – Present</div></div>
+        <div class="exp-tab"     onclick="setExp(1,this)"><div class="exp-co">DNEG</div><div class="exp-per">04/2025 – 08/2025</div></div>
+        <div class="exp-tab"     onclick="setExp(2,this)"><div class="exp-co">Alzahra VFX</div><div class="exp-per">12/2024</div></div>
+        <div class="exp-tab"     onclick="setExp(3,this)"><div class="exp-co">Hoop VFX</div><div class="exp-per">03/2023 – 06/2024</div></div>
+        <div class="exp-tab"     onclick="setExp(4,this)"><div class="exp-co">DNEG (Line Producer)</div><div class="exp-per">07/2021 – 03/2023</div></div>
+        <div class="exp-tab"     onclick="setExp(5,this)"><div class="exp-co">Early Career</div><div class="exp-per">2012 – 2021</div></div>
       </div>
+      <div class="exp-body">
 
-      <div class="exp-content">
-
-        <!-- Panel 0 -->
-        <div class="exp-panel active" id="exp-0">
-          <div class="exp-role-title">Senior Project Manager</div>
-          <div class="exp-role-sub">Squadra Media · Bengaluru · AI / SaaS / LMS</div>
+        <div class="exp-panel on" id="ep0">
+          <div class="exp-role">Senior Project Manager</div>
+          <div class="exp-sub">Squadra Media · Bengaluru · AI / SaaS / LMS</div>
           <div class="exp-kpis">
-            <div class="exp-kpi"><div class="exp-kpi-val">21k+</div><div class="exp-kpi-lbl">Active Users</div></div>
-            <div class="exp-kpi"><div class="exp-kpi-val">Gen AI</div><div class="exp-kpi-lbl">Content Mgmt</div></div>
-            <div class="exp-kpi"><div class="exp-kpi-val">VR</div><div class="exp-kpi-lbl">Learning Integration</div></div>
+            <div class="exp-kpi"><div class="exp-kpi-v">21k+</div><div class="exp-kpi-l">Active Users</div></div>
+            <div class="exp-kpi"><div class="exp-kpi-v">Gen AI</div><div class="exp-kpi-l">Content Mgmt</div></div>
+            <div class="exp-kpi"><div class="exp-kpi-v">VR</div><div class="exp-kpi-l">Learning Integration</div></div>
           </div>
-          <ul class="exp-points">
+          <ul class="exp-pts">
             <li>Managed end-to-end LMS platform lifecycle for 21,000+ active learners, ensuring performance, scalability, and seamless learning experience</li>
             <li>Led Generative AI–enabled content management — AI-driven personalization, intelligent tagging, and recommendation systems to boost learner engagement</li>
             <li>Drove VR-enabled learning integration, embedding immersive simulation content into the LMS for experiential training</li>
             <li>Owned full Agile delivery cycle: sprint planning, product backlog management, feature prioritization, and sprint execution</li>
             <li>Collaborated across product, engineering, QA, and DevOps teams to manage releases, deployments, and production readiness</li>
-            <li>Ensured compliance with quality, security, scalability, and data privacy standards in enterprise-grade SaaS and EdTech environments</li>
+            <li>Ensured compliance with quality, security, scalability, and data privacy standards for enterprise-grade SaaS and EdTech</li>
             <li>Translated business and learning requirements into scalable LMS functionalities for diverse enterprise clients</li>
           </ul>
         </div>
 
-        <!-- Panel 1 -->
-        <div class="exp-panel" id="exp-1">
-          <div class="exp-role-title">Production Supervisor / Project Manager</div>
-          <div class="exp-role-sub">DNEG · Mumbai · High-End VFX</div>
+        <div class="exp-panel" id="ep1">
+          <div class="exp-role">Production Supervisor / Project Manager</div>
+          <div class="exp-sub">DNEG · Mumbai · High-End VFX</div>
           <div class="exp-kpis">
-            <div class="exp-kpi"><div class="exp-kpi-val">VFX</div><div class="exp-kpi-lbl">High-End Projects</div></div>
-            <div class="exp-kpi"><div class="exp-kpi-val">Multi</div><div class="exp-kpi-lbl">Dept Coordination</div></div>
+            <div class="exp-kpi"><div class="exp-kpi-v">VFX</div><div class="exp-kpi-l">High-End Projects</div></div>
+            <div class="exp-kpi"><div class="exp-kpi-v">Multi</div><div class="exp-kpi-l">Dept Coordination</div></div>
           </div>
-          <ul class="exp-points">
+          <ul class="exp-pts">
             <li>Ensured smooth running of high-end digital VFX projects through production and supervision team support</li>
             <li>Coordinated accurate and efficient flow of information and assets between artists and departments</li>
             <li>Maintained project databases tracking current element and project statuses with precision</li>
@@ -764,11 +632,10 @@ footer {
           </ul>
         </div>
 
-        <!-- Panel 2 -->
-        <div class="exp-panel" id="exp-2">
-          <div class="exp-role-title">Project Delivery Manager</div>
-          <div class="exp-role-sub">Alzahra VFX · Dubai / Iran</div>
-          <ul class="exp-points">
+        <div class="exp-panel" id="ep2">
+          <div class="exp-role">Project Delivery Manager</div>
+          <div class="exp-sub">Alzahra VFX · Dubai / Iran</div>
+          <ul class="exp-pts">
             <li>Developed and maintained strong client relationships, ensuring needs and expectations were met at every milestone</li>
             <li>Led project planning and implementation, ensuring completion on time, within scope, and on budget</li>
             <li>Facilitated Scrum ceremonies and championed Agile practices and continuous improvement across the team</li>
@@ -776,11 +643,10 @@ footer {
           </ul>
         </div>
 
-        <!-- Panel 3 -->
-        <div class="exp-panel" id="exp-3">
-          <div class="exp-role-title">VFX Line Producer</div>
-          <div class="exp-role-sub">Hoop VFX · Chennai, Tamil Nadu</div>
-          <ul class="exp-points">
+        <div class="exp-panel" id="ep3">
+          <div class="exp-role">VFX Line Producer</div>
+          <div class="exp-sub">Hoop VFX · Chennai, Tamil Nadu</div>
+          <ul class="exp-pts">
             <li>Managed client relationships, responding to queries and conducting regular update meetings</li>
             <li>Led project planning and execution ensuring timely delivery and strict budget adherence</li>
             <li>Implemented Scrum methodologies; facilitated Agile ceremonies and removed team impediments</li>
@@ -788,11 +654,10 @@ footer {
           </ul>
         </div>
 
-        <!-- Panel 4 -->
-        <div class="exp-panel" id="exp-4">
-          <div class="exp-role-title">Line Producer</div>
-          <div class="exp-role-sub">DNEG · Mumbai</div>
-          <ul class="exp-points">
+        <div class="exp-panel" id="ep4">
+          <div class="exp-role">Line Producer</div>
+          <div class="exp-sub">DNEG · Mumbai</div>
+          <ul class="exp-pts">
             <li>Facilitated daily scrums and weekly sprints to enhance team processes and goal achievement</li>
             <li>Prioritized capabilities, defined epics, and facilitated successful implementation</li>
             <li>Managed resource planning, scheduling, and conflict resolution across production teams</li>
@@ -800,13 +665,12 @@ footer {
           </ul>
         </div>
 
-        <!-- Panel 5 -->
-        <div class="exp-panel" id="exp-5">
-          <div class="exp-role-title">Production Coordinator → Manager</div>
-          <div class="exp-role-sub">Minte · Regh · Gelarograce · Unifi · PRANA · Prime Focus · Deluxe Digi</div>
-          <ul class="exp-points">
-            <li>Grew from Depth Artist / Roto Artist at PRANA Studio & Prime Focus Mumbai into full Production Manager roles</li>
-            <li>Earned VFX credits on Game of Thrones (Season 6, Episode 9), Mirzya, and The Lost Tomb</li>
+        <div class="exp-panel" id="ep5">
+          <div class="exp-role">Production Coordinator → Manager</div>
+          <div class="exp-sub">Minte · Regh · Gelarograce · Unifi · PRANA · Prime Focus · Deluxe Digi</div>
+          <ul class="exp-pts">
+            <li>Grew from Depth Artist / Roto Artist at PRANA Studio &amp; Prime Focus Mumbai into full Production Manager roles</li>
+            <li>Earned VFX credits on Game of Thrones S6E9, Jurassic World, Mirzya, The Lost Tomb, Brahmastra, and Fateh</li>
             <li>Oversaw project coordination, team workflows, and daily reporting across multiple animation and VFX studios</li>
             <li>Built foundational expertise in 2D production, CG pipelines, and cross-studio collaboration over a decade</li>
           </ul>
@@ -817,234 +681,229 @@ footer {
   </div>
 </section>
 
-<!-- ═══════════ CREDENTIALS ═══════════ -->
-<section id="credentials" style="position:relative;z-index:1;">
-  <div class="section-wrap">
-    <div class="section-header reveal">
-      <div class="section-num">03</div>
-      <div class="section-title-block">
-        <div class="section-tag">Credentials</div>
-        <h2>Certifications &amp; Achievements</h2>
+<!-- ── 03 CREDENTIALS ────────────────────── -->
+<section id="credentials">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">03</div>
+      <div class="sec-title">
+        <div class="sec-tag">Credentials</div>
+        <h2>Certifications, Credits &amp; Achievements</h2>
       </div>
     </div>
-    <!-- Certifications full-width -->
-    <div style="border-top:1px solid var(--border);">
-      <div class="cert-col-title" style="padding:28px 0 0 0; border:none; font-size:0.7rem;">Certifications</div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--border);">
-      <div style="border-right:1px solid var(--border);">
-        <div class="cert-row reveal">
+
+    <!-- Certifications 2×2 -->
+    <div class="cred-certs reveal">
+      <div class="cred-cert-col">
+        <div class="col-head">Certifications</div>
+        <div class="cert-row">
           <span class="cert-name">PMI Essentials M.O.R.E. — Maximizing Project Success</span>
           <a href="https://www.credly.com/badges/4f4879d2-3636-400a-a556-a75cae51efed/public_url" target="_blank" class="cert-link">Verify ↗</a>
         </div>
-        <div class="cert-row reveal">
+        <div class="cert-row">
           <span class="cert-name">Generative AI Overview for Project Managers</span>
           <a href="https://www.credly.com/badges/c26aa206-fbab-48af-9ea7-d1d2587aa8aa/public_url" target="_blank" class="cert-link">Verify ↗</a>
         </div>
       </div>
-      <div>
-        <div class="cert-row reveal">
+      <div class="cred-cert-col">
+        <div class="col-head">&nbsp;</div>
+        <div class="cert-row">
           <span class="cert-name">Certified ScrumMaster® (CSM)</span>
           <a href="https://bcert.me/bc/html/show-badge.html?b=pgaetekp" target="_blank" class="cert-link">Verify ↗</a>
         </div>
-        <div class="cert-row reveal">
-          <span class="cert-name">PMI Citizen Developer™ Business Architect — CDBA Introduction</span>
+        <div class="cert-row">
+          <span class="cert-name">PMI Citizen Developer™ Business Architect (CDBA) Introduction</span>
           <a href="https://learning.pmi.org/certificate?id=38163a35-fbd2-4088-a5af-3fa5da74b31a" target="_blank" class="cert-link">Verify ↗</a>
         </div>
       </div>
     </div>
 
-    <!-- Credits & Achievements -->
-    <div style="border-top:1px solid var(--border); margin-top:0;">
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--border);">
+    <!-- Credits 3 columns -->
+    <div class="credits-grid reveal">
 
-        <!-- Film / TV Credits -->
-        <div style="border-right:1px solid var(--border);">
-          <div class="cert-col-title" style="padding:24px 0 24px 0;">🎬 &nbsp;Film &amp; TV Credits</div>
-          <div class="achievement-row reveal" style="padding:16px 0;">
-            <div class="achievement-badge"></div>
-            <div>
-              <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">Game of Thrones</div>
-              <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">S6 · E9 · VFX</div>
-              <a href="https://www.imdb.com/title/tt4283088/" target="_blank" style="font-size:0.62rem;color:var(--gold);text-decoration:none;letter-spacing:0.1em;">IMDb ↗</a>
-            </div>
-          </div>
-          <div class="achievement-row reveal" style="padding:16px 0;">
-            <div class="achievement-badge"></div>
-            <div>
-              <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">Jurassic World</div>
-              <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">2015 · VFX</div>
-              <a href="https://www.imdb.com/title/tt0369610/" target="_blank" style="font-size:0.62rem;color:var(--gold);text-decoration:none;letter-spacing:0.1em;">IMDb ↗</a>
-            </div>
-          </div>
-          <div class="achievement-row reveal" style="padding:16px 0;">
-            <div class="achievement-badge"></div>
-            <div>
-              <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">Mirzya</div>
-              <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">Bollywood · VFX</div>
-              <a href="https://www.imdb.com/title/tt4940456/" target="_blank" style="font-size:0.62rem;color:var(--gold);text-decoration:none;letter-spacing:0.1em;">IMDb ↗</a>
-            </div>
-          </div>
-          <div class="achievement-row reveal" style="padding:16px 0;">
-            <div class="achievement-badge"></div>
-            <div>
-              <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">The Lost Tomb</div>
-              <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">VFX</div>
-              <a href="https://www.imdb.com/title/tt4219438/" target="_blank" style="font-size:0.62rem;color:var(--gold);text-decoration:none;letter-spacing:0.1em;">IMDb ↗</a>
-            </div>
-          </div>
-          <div class="achievement-row reveal" style="padding:16px 0;">
-            <div class="achievement-badge"></div>
-            <div>
-              <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">Brahmastra</div>
-              <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">Bollywood · VFX</div>
-              <a href="https://www.imdb.com/title/tt6277462/" target="_blank" style="font-size:0.62rem;color:var(--gold);text-decoration:none;letter-spacing:0.1em;">IMDb ↗</a>
-            </div>
-          </div>
-          <div class="achievement-row reveal" style="padding:16px 0; border-bottom:none;">
-            <div class="achievement-badge"></div>
-            <div>
-              <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">Fateh</div>
-              <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">Bollywood · VFX</div>
-              <a href="https://www.imdb.com/title/tt27679608/" target="_blank" style="font-size:0.62rem;color:var(--gold);text-decoration:none;letter-spacing:0.1em;">IMDb ↗</a>
-            </div>
+      <!-- Film & TV -->
+      <div class="cred-col">
+        <div class="cred-col-head">🎬 &nbsp;Film &amp; TV Credits</div>
+        <div class="credit-row">
+          <div class="cr-dot"></div>
+          <div>
+            <div class="cr-title">Game of Thrones</div>
+            <div class="cr-sub">S6 · E9 · VFX</div>
+            <a href="https://www.imdb.com/title/tt4283088/" target="_blank" class="cr-link">IMDb ↗</a>
           </div>
         </div>
-
-        <!-- Advertisement Projects -->
-        <div style="border-right:1px solid var(--border);">
-          <div class="cert-col-title" style="padding:24px 0 24px 0;">📺 &nbsp;Advertisement Projects</div>
-          <div class="achievement-row reveal" style="padding:20px 0; flex-direction:column; align-items:flex-start; gap:10px;">
-            <div style="display:flex;align-items:center;gap:12px;">
-              <div class="achievement-badge"></div>
-              <div>
-                <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">Xiaomi</div>
-                <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">Product Commercial</div>
-              </div>
-            </div>
-            <a href="https://youtu.be/bkmJtHTDACI?feature=shared" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;padding:7px 14px;border:1px solid var(--border2);transition:all 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)';" onmouseout="this.style.background='transparent';this.style.color='var(--gold)';">▶ Watch on YouTube ↗</a>
-          </div>
-          <div class="achievement-row reveal" style="padding:20px 0; flex-direction:column; align-items:flex-start; gap:10px; border-bottom:none;">
-            <div style="display:flex;align-items:center;gap:12px;">
-              <div class="achievement-badge"></div>
-              <div>
-                <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">Budweiser</div>
-                <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">Brand Campaign</div>
-              </div>
-            </div>
-            <a href="https://www.instagram.com/p/B4AgGsmBOVE/?igsh=amw3OGppaXFlcWVy" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;padding:7px 14px;border:1px solid var(--border2);transition:all 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)';" onmouseout="this.style.background='transparent';this.style.color='var(--gold)';">📸 View on Instagram ↗</a>
+        <div class="credit-row">
+          <div class="cr-dot"></div>
+          <div>
+            <div class="cr-title">Jurassic World</div>
+            <div class="cr-sub">2015 · VFX</div>
+            <a href="https://www.imdb.com/title/tt0369610/" target="_blank" class="cr-link">IMDb ↗</a>
           </div>
         </div>
-
-        <!-- Education & Career Milestone -->
-        <div>
-          <div class="cert-col-title" style="padding:24px 0 24px 0;">🎓 &nbsp;Education &amp; Milestones</div>
-          <div class="achievement-row reveal" style="padding:16px 0; flex-direction:column; align-items:flex-start; gap:4px;">
-            <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">B.A. — Sunrise University</div>
-            <div style="font-size:0.7rem;color:var(--dim);">Alwar, Rajasthan · 2016</div>
-          </div>
-          <div class="achievement-row reveal" style="padding:16px 0; flex-direction:column; align-items:flex-start; gap:4px;">
-            <div class="achievement-badge" style="margin-bottom:6px;"></div>
-            <div style="font-size:0.82rem;color:var(--ice);">Scaled LMS to 21,000+ enterprise learners</div>
-          </div>
-          <div class="achievement-row reveal" style="padding:16px 0; flex-direction:column; align-items:flex-start; gap:4px;">
-            <div class="achievement-badge" style="margin-bottom:6px;"></div>
-            <div style="font-size:0.82rem;color:var(--ice);">13-yr progression: Artist → Line Producer → Senior PM</div>
-          </div>
-          <div class="achievement-row reveal" style="padding:16px 0; border-bottom:none; flex-direction:column; align-items:flex-start; gap:4px;">
-            <div class="achievement-badge" style="margin-bottom:6px;"></div>
-            <div style="font-size:0.82rem;color:var(--ice);">4 PMI/Scrum Certifications achieved</div>
+        <div class="credit-row">
+          <div class="cr-dot"></div>
+          <div>
+            <div class="cr-title">Mirzya</div>
+            <div class="cr-sub">Bollywood · VFX</div>
+            <a href="https://www.imdb.com/title/tt4940456/" target="_blank" class="cr-link">IMDb ↗</a>
           </div>
         </div>
-
+        <div class="credit-row">
+          <div class="cr-dot"></div>
+          <div>
+            <div class="cr-title">The Lost Tomb</div>
+            <div class="cr-sub">VFX</div>
+            <a href="https://www.imdb.com/title/tt4219438/" target="_blank" class="cr-link">IMDb ↗</a>
+          </div>
+        </div>
+        <div class="credit-row">
+          <div class="cr-dot"></div>
+          <div>
+            <div class="cr-title">Brahmastra</div>
+            <div class="cr-sub">Bollywood · VFX</div>
+            <a href="https://www.imdb.com/title/tt6277462/" target="_blank" class="cr-link">IMDb ↗</a>
+          </div>
+        </div>
+        <div class="credit-row">
+          <div class="cr-dot"></div>
+          <div>
+            <div class="cr-title">Fateh</div>
+            <div class="cr-sub">Bollywood · VFX</div>
+            <a href="https://www.imdb.com/title/tt27679608/" target="_blank" class="cr-link">IMDb ↗</a>
+          </div>
+        </div>
       </div>
+
+      <!-- Ads -->
+      <div class="cred-col">
+        <div class="cred-col-head">📺 &nbsp;Advertisement Projects</div>
+        <div class="credit-row" style="flex-direction:column;align-items:flex-start;gap:10px;">
+          <div style="display:flex;align-items:flex-start;gap:14px;">
+            <div class="cr-dot" style="margin-top:5px;"></div>
+            <div>
+              <div class="cr-title">Xiaomi</div>
+              <div class="cr-sub">Product Commercial</div>
+            </div>
+          </div>
+          <a href="https://youtu.be/bkmJtHTDACI?feature=shared" target="_blank" class="ad-btn">▶ Watch on YouTube ↗</a>
+        </div>
+        <div class="credit-row" style="flex-direction:column;align-items:flex-start;gap:10px;">
+          <div style="display:flex;align-items:flex-start;gap:14px;">
+            <div class="cr-dot" style="margin-top:5px;"></div>
+            <div>
+              <div class="cr-title">Budweiser</div>
+              <div class="cr-sub">Brand Campaign</div>
+            </div>
+          </div>
+          <a href="https://www.instagram.com/p/B4AgGsmBOVE/?igsh=amw3OGppaXFlcWVy" target="_blank" class="ad-btn">📸 View on Instagram ↗</a>
+        </div>
+      </div>
+
+      <!-- Education & Milestones -->
+      <div class="cred-col">
+        <div class="cred-col-head">🎓 &nbsp;Education &amp; Milestones</div>
+        <div class="edu-row">
+          <div class="edu-title">B.A. — Sunrise University</div>
+          <div class="edu-sub">Alwar, Rajasthan · 2016</div>
+        </div>
+        <div class="credit-row">
+          <div class="cr-dot"></div>
+          <div class="cr-title" style="color:var(--silver);font-weight:300;">Scaled LMS to 21,000+ enterprise learners</div>
+        </div>
+        <div class="credit-row">
+          <div class="cr-dot"></div>
+          <div class="cr-title" style="color:var(--silver);font-weight:300;">13-yr progression: Artist → Line Producer → Senior PM</div>
+        </div>
+        <div class="credit-row">
+          <div class="cr-dot"></div>
+          <div class="cr-title" style="color:var(--silver);font-weight:300;">4 PMI/Scrum professional certifications achieved</div>
+        </div>
+        <div class="credit-row">
+          <div class="cr-dot"></div>
+          <div class="cr-title" style="color:var(--silver);font-weight:300;">VFX credits on 6 major film &amp; TV productions</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ═══════════ CONTACT ═══════════ -->
-<section id="contact" style="position:relative;z-index:1;">
-  <div class="section-wrap">
-    <div class="section-header reveal">
-      <div class="section-num">04</div>
-      <div class="section-title-block">
-        <div class="section-tag">Get in Touch</div>
+<!-- ── 04 CONTACT ──────────────────────────── -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">04</div>
+      <div class="sec-title">
+        <div class="sec-tag">Get in Touch</div>
         <h2>Open to New Opportunities</h2>
       </div>
     </div>
     <div class="contact-grid">
       <div class="contact-left reveal">
         <p class="contact-intro">
-          With 13 years of experience across AI, SaaS, EdTech, and VFX delivery — I bring a rare combination of technical depth, creative background, and enterprise project management expertise.<br><br>
-          Currently based in <strong>Pune, Maharashtra</strong>, and open to Senior Project Manager or Delivery Manager roles in AI-driven, SaaS, or EdTech organizations.
+          With 13 years across AI, SaaS, EdTech, and VFX delivery — I bring a rare combination of <strong>technical depth, creative background, and enterprise PM expertise</strong>.<br><br>
+          Currently based in <strong>Pune, Maharashtra</strong>, and open to Senior Project Manager or Delivery Manager roles in AI-driven, SaaS, or EdTech organizations globally.
         </p>
-        <div class="btn-gold btn" style="display:inline-flex; cursor:default;">
-          📧 &nbsp; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="493a21262b21203d3f2f31092e24282025672a2624">[email&#160;protected]</a>
-        </div>
+        <a href="mailto:shobhitvfx@gmail.com" class="btn btn-gold">📧 &nbsp;Send an Email</a>
       </div>
       <div class="contact-right reveal">
         <div class="contact-item">
-          <div class="contact-item-icon">📧</div>
-          <div>
-            <div class="contact-item-label">Email</div>
-            <a href="/cdn-cgi/l/email-protection#eb9883848983829f9d8d93ab8c868a8287c5888486" class="contact-item-value"><span class="__cf_email__" data-cfemail="f2819a9d909a9b8684948ab2959f939b9edc919d9f">[email&#160;protected]</span></a>
-          </div>
+          <div class="contact-icon">📧</div>
+          <div><div class="contact-lbl">Email</div><a href="mailto:shobhitvfx@gmail.com" class="contact-val">shobhitvfx@gmail.com</a></div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">📞</div>
-          <div>
-            <div class="contact-item-label">Phone</div>
-            <span class="contact-item-value">+91 84519 35845</span>
-          </div>
+          <div class="contact-icon">📞</div>
+          <div><div class="contact-lbl">Phone</div><span class="contact-val">+91 84519 35845</span></div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">📍</div>
-          <div>
-            <div class="contact-item-label">Location</div>
-            <span class="contact-item-value">Pune, Maharashtra, India</span>
-          </div>
+          <div class="contact-icon">📍</div>
+          <div><div class="contact-lbl">Location</div><span class="contact-val">Pune, Maharashtra, India</span></div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">🏆</div>
-          <div>
-            <div class="contact-item-label">Scrum Certification</div>
-            <a href="https://bcert.me/spgaetekp" target="_blank" class="contact-item-value">bcert.me/spgaetekp</a>
-          </div>
+          <div class="contact-icon">🏆</div>
+          <div><div class="contact-lbl">Scrum Certification</div><a href="https://bcert.me/bc/html/show-badge.html?b=pgaetekp" target="_blank" class="contact-val">View CSM Badge ↗</a></div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">🤖</div>
-          <div>
-            <div class="contact-item-label">AI PM Certification</div>
-            <a href="https://www.credly.com/badges/c26aa206-fbab-48af-9ea7-d1d2587aa8aa/public_url" target="_blank" class="contact-item-value">View on Credly</a>
-          </div>
+          <div class="contact-icon">🤖</div>
+          <div><div class="contact-lbl">AI PM Certification</div><a href="https://www.credly.com/badges/c26aa206-fbab-48af-9ea7-d1d2587aa8aa/public_url" target="_blank" class="contact-val">View on Credly ↗</a></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ── FOOTER ───────────────────────────── -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-left">
-      © 2026 Shobhit Mishra &nbsp;·&nbsp; Senior Project Manager &nbsp;·&nbsp; Pune, India
-    </div>
-    <div class="footer-right">
-      13 Years · AI · SaaS · EdTech · VFX
-    </div>
+  <div class="foot-inner">
+    <div class="foot-l">© 2026 Shobhit Mishra &nbsp;·&nbsp; Senior Project Manager &nbsp;·&nbsp; Pune, India</div>
+    <div class="foot-r">13 Years · AI · SaaS · EdTech · VFX</div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Nav scroll
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+<script>
+// Nav
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);
 });
 
-// Experience tab switcher
-function switchExp(idx) {
-  document.querySelectorAll('.exp-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
-  document.querySelectorAll('.exp-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+// Experience tabs
+function setExp(i,el){
+  document.querySelectorAll('.exp-tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.exp-panel').forEach(p=>p.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('ep'+i).classList.add('on');
 }
 
-//
+// Reveal on scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('vis'),i*70);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
