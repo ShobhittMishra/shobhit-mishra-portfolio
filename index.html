@@ -1,271 +1,1050 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shobhit Mishra | AI & Project Lead</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --tron-blue: #00f2ff;
-            --tron-red: #ff003c;
-            --tron-green: #00ff95;
-            --dark-bg: #05050a;
-            --panel-bg: rgba(0, 10, 20, 0.9);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shobhit Mishra — Senior Project Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:    #0d1b2a;
+  --navy2:   #132234;
+  --navy3:   #1a2e45;
+  --slate:   #2c4a6e;
+  --gold:    #c9a84c;
+  --gold2:   #e8c97a;
+  --silver:  #8fa8c8;
+  --ice:     #d4e4f7;
+  --white:   #f4f8fc;
+  --muted:   #6b8aaa;
+  --border:  #1f3652;
+  --border2: #2a4a6a;
+  --text:    #e8f0f8;
+  --dim:     #4a6a8a;
+}
 
-        body {
-            background-color: var(--dark-bg);
-            background-image: 
-                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            color: #fff;
-            font-family: 'Rajdhani', sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-        .container { max-width: 1100px; margin: 0 auto; }
+body {
+  background: var(--navy);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
 
-        .hero-card {
-            border: 2px solid var(--tron-blue);
-            padding: 40px;
-            position: relative;
-            box-shadow: 0 0 20px var(--tron-blue);
-            margin-bottom: 30px;
-            background: var(--panel-bg);
-            text-align: center;
-        }
+/* ─── GRID LINES background ─── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(100,160,220,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100,160,220,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none; z-index: 0;
+}
 
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            margin: 0;
-            color: var(--tron-blue);
-            text-shadow: 0 0 20px var(--tron-blue);
-            text-transform: uppercase;
-        }
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 200; padding: 0;
+  border-bottom: 1px solid transparent;
+  transition: all 0.35s;
+}
+nav.scrolled {
+  background: rgba(13,27,42,0.97);
+  border-color: var(--border);
+  backdrop-filter: blur(16px);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 48px;
+  display: flex; align-items: stretch;
+  height: 64px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none; margin-right: auto;
+}
+.nav-logo-mark {
+  width: 36px; height: 36px;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 700;
+  color: var(--navy); flex-shrink: 0;
+}
+.nav-logo-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ice); line-height: 1.3;
+}
+.nav-logo-text span {
+  display: block; font-weight: 300;
+  font-size: 0.65rem; color: var(--muted);
+  letter-spacing: 0.25em;
+}
+.nav-links {
+  display: flex; list-style: none;
+  border-left: 1px solid var(--border);
+}
+.nav-links li { border-right: 1px solid var(--border); }
+.nav-links a {
+  display: flex; align-items: center;
+  padding: 0 24px; height: 100%;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  transition: all 0.2s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 100%;
+  height: 2px; background: var(--gold);
+  transition: right 0.3s ease;
+}
+.nav-links a:hover { color: var(--gold); background: rgba(201,168,76,0.04); }
+.nav-links a:hover::after { right: 0; }
 
-        .contact-uplink {
-            margin-top: 15px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            color: var(--tron-green);
-            letter-spacing: 2px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  grid-template-rows: auto;
+  border-bottom: 1px solid var(--border);
+  position: relative; z-index: 1;
+  padding-top: 64px;
+}
 
-        .contact-item { border: 1px solid var(--tron-green); padding: 5px 15px; background: rgba(0, 255, 149, 0.1); text-decoration: none; color: inherit; }
+.hero-left {
+  padding: 80px 48px 80px 48px;
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column; justify-content: center;
+  max-width: 760px;
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 32px;
+  opacity: 0; animation: fadeUp 0.7s 0.2s ease forwards;
+}
+.hero-eyebrow-line { width: 40px; height: 1px; background: var(--gold); }
+.hero-eyebrow-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold);
+}
 
-        /* --- CERTIFICATIONS SECTION --- */
-        .cert-container {
-            margin-top: 30px;
-            padding: 20px;
-            border: 1px solid var(--tron-green);
-            background: rgba(0, 255, 149, 0.05);
-            box-shadow: 0 0 15px rgba(0, 255, 149, 0.2);
-            text-align: left;
-        }
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.2rem, 5.5vw, 5rem);
+  font-weight: 700; line-height: 1.05;
+  color: var(--white);
+  opacity: 0; animation: fadeUp 0.8s 0.35s ease forwards;
+}
+h1 .last { color: var(--gold); display: block; }
 
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 15px;
-            margin-top: 10px;
-        }
+.hero-title-sub {
+  margin-top: 20px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 400;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--silver);
+  opacity: 0; animation: fadeUp 0.8s 0.5s ease forwards;
+}
 
-        .cert-badge {
-            display: block;
-            text-decoration: none;
-            color: #fff;
-            padding: 10px;
-            border: 1px solid rgba(0, 255, 149, 0.3);
-            background: rgba(0, 0, 0, 0.3);
-            transition: 0.3s;
-            font-size: 0.85rem;
-            font-family: 'Orbitron', sans-serif;
-        }
+.hero-divider {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin: 32px 0;
+  opacity: 0; animation: fadeUp 0.8s 0.6s ease forwards;
+}
 
-        .cert-badge:hover {
-            border-color: var(--tron-green);
-            background: rgba(0, 255, 149, 0.1);
-            box-shadow: 0 0 10px var(--tron-green);
-        }
+.hero-summary {
+  font-size: 0.95rem; line-height: 1.9;
+  color: var(--silver); max-width: 560px;
+  opacity: 0; animation: fadeUp 0.8s 0.7s ease forwards;
+}
+.hero-summary strong { color: var(--ice); font-weight: 500; }
 
-        .summary-box {
-            margin-top: 20px;
-            padding: 20px;
-            border-left: 4px solid var(--tron-blue);
-            background: rgba(0, 242, 255, 0.05);
-            text-align: left;
-            line-height: 1.6;
-            font-size: 1.1rem;
-        }
+.hero-actions {
+  margin-top: 44px; display: flex; gap: 16px;
+  opacity: 0; animation: fadeUp 0.8s 0.85s ease forwards;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 32px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.25s; border: none; cursor: pointer;
+}
+.btn-gold {
+  background: var(--gold); color: var(--navy);
+}
+.btn-gold:hover { background: var(--gold2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+.btn-outline {
+  border: 1px solid var(--border2); color: var(--silver);
+  background: transparent;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
 
-        .grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
-        .panel { background: var(--panel-bg); padding: 25px; position: relative; }
-        .blue-border { border: 1px solid var(--tron-blue); box-shadow: 0 0 15px rgba(0, 242, 255, 0.3); }
-        .green-border { border: 1px solid var(--tron-green); box-shadow: 0 0 15px rgba(0, 255, 149, 0.3); }
-        .red-border { border: 2px solid var(--tron-red); box-shadow: 0 0 20px rgba(255, 0, 60, 0.4); }
+/* Hero right — KPI panel */
+.hero-right {
+  display: flex; flex-direction: column;
+  opacity: 0; animation: fadeIn 1s 1s ease forwards;
+}
+.kpi-block {
+  flex: 1; padding: 36px 32px;
+  border-bottom: 1px solid var(--border);
+  display: flex; flex-direction: column; justify-content: center;
+  transition: background 0.3s;
+  position: relative; overflow: hidden;
+}
+.kpi-block::before {
+  content: ''; position: absolute;
+  left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--gold); opacity: 0;
+  transition: opacity 0.3s;
+}
+.kpi-block:hover { background: rgba(201,168,76,0.03); }
+.kpi-block:hover::before { opacity: 1; }
+.kpi-block:last-child { border-bottom: none; }
+.kpi-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 10px;
+}
+.kpi-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem; font-weight: 700;
+  color: var(--white); line-height: 1;
+}
+.kpi-value em { color: var(--gold); font-style: normal; }
+.kpi-desc {
+  font-size: 0.72rem; color: var(--muted);
+  margin-top: 8px; line-height: 1.6;
+}
 
-        h2 { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; margin-bottom: 15px; letter-spacing: 2px; }
-        .blue-text { color: var(--tron-blue); }
-        .green-text { color: var(--tron-green); }
-        .red-text { color: var(--tron-red); text-shadow: 0 0 10px var(--tron-red); }
+/* ─── SECTION STRUCTURE ─── */
+.section-wrap {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 48px; position: relative; z-index: 1;
+}
+section { border-bottom: 1px solid var(--border); }
 
-        .credit-list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; }
-        .credit-item {
-            background: rgba(255, 0, 60, 0.1);
-            border: 1px solid var(--tron-red);
-            padding: 8px 15px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
-            transition: 0.3s;
-        }
-        .credit-item a { text-decoration: none; color: #fff; display: block; }
-        .credit-item:hover { background: var(--tron-red); box-shadow: 0 0 15px var(--tron-red); }
-        .credit-item a:hover { color: #000; }
+.section-header {
+  display: grid; grid-template-columns: 240px 1fr;
+  gap: 0; border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+.section-num {
+  padding: 40px 40px 40px 0;
+  border-right: 1px solid var(--border);
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem; font-weight: 700;
+  color: var(--border2); line-height: 1;
+  display: flex; align-items: center;
+}
+.section-title-block {
+  padding: 40px 0 40px 40px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.section-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px;
+}
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem; font-weight: 600;
+  color: var(--white); line-height: 1.2;
+}
 
-        .skill-tag {
-            display: inline-block;
-            border: 1px solid var(--tron-green);
-            padding: 5px 12px;
-            margin: 5px;
-            font-size: 0.8rem;
-            color: var(--tron-green);
-        }
+/* ─── CORE COMPETENCIES ─── */
+.competencies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border);
+}
+.comp-item {
+  padding: 40px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.25s;
+  position: relative;
+}
+.comp-item:nth-child(3n) { border-right: none; }
+.comp-item:hover { background: rgba(201,168,76,0.03); }
+.comp-icon {
+  width: 44px; height: 44px;
+  border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 20px;
+  transition: border-color 0.25s;
+}
+.comp-item:hover .comp-icon { border-color: var(--gold); }
+.comp-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ice); margin-bottom: 12px;
+}
+.comp-desc {
+  font-size: 0.78rem; line-height: 1.8;
+  color: var(--muted);
+}
+.comp-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 16px;
+}
+.comp-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.62rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--dim); padding: 3px 8px;
+  border: 1px solid var(--border); border-radius: 2px;
+}
 
-        .archive-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            opacity: 0.9;
-        }
-        .archive-item { border-left: 2px solid var(--tron-blue); padding-left: 10px; margin-bottom: 10px; }
-        .archive-company { color: var(--tron-blue); font-weight: bold; display: block; }
-        .archive-role { font-size: 0.85rem; opacity: 0.7; }
+/* ─── EXPERIENCE ─── */
+.exp-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+}
+.exp-sidebar {
+  border-right: 1px solid var(--border);
+  padding: 0;
+}
+.exp-tab {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+.exp-tab::before {
+  content: ''; position: absolute;
+  left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--gold); opacity: 0; transition: opacity 0.2s;
+}
+.exp-tab.active { background: rgba(201,168,76,0.05); }
+.exp-tab.active::before { opacity: 1; }
+.exp-tab-company {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ice); margin-bottom: 4px;
+  transition: color 0.2s;
+}
+.exp-tab.active .exp-tab-company { color: var(--gold); }
+.exp-tab-period {
+  font-size: 0.65rem; color: var(--dim);
+  letter-spacing: 0.08em;
+}
+.exp-content { padding: 48px; }
+.exp-panel { display: none; }
+.exp-panel.active { display: block; }
+.exp-role-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; font-weight: 600;
+  color: var(--white); margin-bottom: 4px;
+}
+.exp-role-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 12px;
+}
+.exp-role-sub::after {
+  content: ''; flex: 0 0 40px; height: 1px; background: var(--border2);
+}
+.exp-kpis {
+  display: flex; gap: 0;
+  border: 1px solid var(--border);
+  margin-bottom: 32px;
+}
+.exp-kpi {
+  flex: 1; padding: 20px 24px;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+.exp-kpi:last-child { border-right: none; }
+.exp-kpi-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; font-weight: 700; color: var(--gold);
+}
+.exp-kpi-lbl { font-size: 0.62rem; color: var(--dim); margin-top: 4px; letter-spacing: 0.1em; }
 
-        .btn-link {
-            display: block;
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            border: 2px solid var(--tron-blue);
-            color: var(--tron-blue);
-            text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            transition: 0.3s;
-            background: rgba(0, 242, 255, 0.05);
-        }
-        .btn-link:hover { background: var(--tron-blue); color: #000; box-shadow: 0 0 40px var(--tron-blue); }
+.exp-points { list-style: none; }
+.exp-points li {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 12px 0; border-bottom: 1px solid var(--border);
+  font-size: 0.82rem; line-height: 1.7; color: var(--silver);
+}
+.exp-points li:last-child { border-bottom: none; }
+.exp-points li::before {
+  content: '›'; color: var(--gold); font-size: 1.1rem;
+  flex-shrink: 0; margin-top: 1px; font-weight: 600;
+}
 
-        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } .contact-uplink { flex-direction: column; gap: 10px; } }
-    </style>
+/* ─── CERTIFICATIONS & ACHIEVEMENTS ─── */
+.certs-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+.cert-col { border-right: 1px solid var(--border); }
+.cert-col:last-child { border-right: none; }
+.cert-col-title {
+  padding: 28px 40px;
+  border-bottom: 1px solid var(--border);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold);
+}
+.cert-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 22px 40px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.cert-row:last-child { border-bottom: none; }
+.cert-row:hover { background: rgba(201,168,76,0.03); }
+.cert-name { font-size: 0.82rem; color: var(--ice); font-weight: 400; }
+.cert-link {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none;
+  padding: 6px 14px; border: 1px solid var(--border2);
+  transition: all 0.2s; white-space: nowrap;
+}
+.cert-link:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+.achievement-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 22px 40px; border-bottom: 1px solid var(--border);
+  font-size: 0.82rem; color: var(--ice);
+  transition: background 0.2s;
+}
+.achievement-row:last-child { border-bottom: none; }
+.achievement-row:hover { background: rgba(201,168,76,0.03); }
+.achievement-badge {
+  width: 8px; height: 8px; background: var(--gold);
+  border-radius: 50%; flex-shrink: 0;
+}
+/* Override padding for inline-style achievement rows inside the 3-col grid */
+.certs-grid-3 .achievement-row { padding: 16px 0; }
+
+/* ─── CONTACT ─── */
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+.contact-left {
+  padding: 56px 48px; border-right: 1px solid var(--border);
+}
+.contact-intro {
+  font-size: 0.88rem; line-height: 1.9;
+  color: var(--silver); margin-bottom: 40px;
+}
+.contact-right { padding: 56px 48px; }
+.contact-item {
+  display: flex; align-items: flex-start; gap: 20px;
+  padding: 22px 0; border-bottom: 1px solid var(--border);
+}
+.contact-item:last-child { border-bottom: none; }
+.contact-item-icon {
+  width: 38px; height: 38px; border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; flex-shrink: 0;
+}
+.contact-item-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 4px;
+}
+.contact-item-value {
+  font-size: 0.82rem; color: var(--ice);
+  text-decoration: none; transition: color 0.2s;
+}
+a.contact-item-value:hover { color: var(--gold); }
+
+/* ─── FOOTER ─── */
+footer {
+  position: relative; z-index: 1;
+  border-top: 1px solid var(--border);
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 48px;
+  display: flex; align-items: stretch;
+  border-left: 1px solid var(--border); border-right: 1px solid var(--border);
+}
+.footer-left {
+  padding: 28px 0; flex: 1;
+  border-right: 1px solid var(--border);
+  font-size: 0.7rem; color: var(--dim); letter-spacing: 0.1em;
+}
+.footer-right {
+  padding: 28px 0 28px 48px;
+  font-size: 0.7rem; color: var(--dim);
+  display: flex; align-items: center;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+.reveal {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { flex-direction: row; border-top: 1px solid var(--border); }
+  .kpi-block { border-right: 1px solid var(--border); border-bottom: none; }
+  .section-header { grid-template-columns: 1fr; }
+  .section-num { display: none; }
+  .section-title-block { padding: 32px 0; border-right: none; }
+  .competencies-grid { grid-template-columns: 1fr 1fr; }
+  .comp-item:nth-child(3n) { border-right: 1px solid var(--border); }
+  .comp-item:nth-child(2n) { border-right: none; }
+  .exp-layout { grid-template-columns: 1fr; }
+  .exp-sidebar { border-right: none; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; }
+  .certs-grid, .contact-grid { grid-template-columns: 1fr; }
+  .cert-col, .contact-left { border-right: none; border-bottom: 1px solid var(--border); }
+  .nav-inner { padding: 0 24px; }
+  .section-wrap { padding: 0 24px; }
+  .hero-left { padding: 60px 24px; }
+}
+@media (max-width: 600px) {
+  .competencies-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  h1 { font-size: 2.6rem; }
+  .exp-kpis { flex-direction: column; }
+  .exp-kpi { border-right: none; border-bottom: 1px solid var(--border); }
+}
+</style>
 </head>
 <body>
 
-<div class="container">
-    <header class="hero-card">
-        <h1>SHOBHIT MISHRA</h1>
-        <div class="contact-uplink">
-            <span class="contact-item">📞 +91 8451935845</span>
-            <a href="mailto:shobhitvfx@gmail.com" class="contact-item">📧 shobhitvfx@gmail.com</a>
-            <span class="contact-item">📍 PUNE, MAHARASHTRA</span>
-        </div>
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">SM</div>
+      <div class="nav-logo-text">
+        Shobhit Mishra
+        <span>Senior Project Manager</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#competencies">Competencies</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-        <div class="cert-container">
-            <h2 class="green-text" style="margin-top: 0;">VERIFIED CREDENTIALS</h2>
-            <div class="cert-grid">
-                <a href="https://bcert.me/bc/html/show-badge.html?b=pgaetekp" target="_blank" class="cert-badge">
-                    CERTIFIED SCRUMMASTER® (CSM)
-                </a>
-                <a href="https://www.credly.com/badges/c26aa206-fbab-48af-9ea7-d1d2587aa8aa/public_url" target="_blank" class="cert-badge">
-                    GENERATIVE AI FOR PROJECT MANAGERS
-                </a>
-                <a href="https://www.credly.com/badges/4f4879d2-3636-400a-a556-a75cae51efed/public_url" target="_blank" class="cert-badge">
-                    PMI ESSENTIALS: M.O.R.E.
-                </a>
-                <a href="https://learning.pmi.org/certificate?id=38163a35-fbd2-4088-a5af-3fa5da74b31a" target="_blank" class="cert-badge">
-                    PMI CITIZEN DEVELOPER™ ARCHITECT
-                </a>
-            </div>
-        </div>
-
-        <div class="summary-box">
-            <strong class="blue-text">EXECUTIVE SUMMARY:</strong><br>
-            Results-driven professional with <strong>13 years of experience</strong> in Agile, Scrum, SaaS, LMS, EdTech, and <strong>Generative AI-enabled platforms</strong>. 
-            Proven expertise in <strong>project lifecycle management</strong>, stakeholder engagement, and <strong>AI-driven content management</strong>. 
-            A specialist in delivering enterprise-scale solutions and immersive <strong>VR learning experiences</strong>.
-        </div>
-    </header>
-
-    <div class="grid">
-        <div class="panel blue-border">
-            <h2 class="blue-text">CURRENT MISSION: SQUADRA MEDIA</h2>
-            <p style="font-weight: bold; color: var(--tron-blue);">Senior Project Manager (AI/SaaS/LMS) | 09/2025 - Present</p>
-            <ul style="padding-left: 20px; opacity: 0.9; line-height: 1.6;">
-                <li>Leading SaaS-based LMS platforms for <strong>21,000+ active users</strong>.</li>
-                <li>Driving <strong>Generative AI-enabled content management</strong> for personalization and intelligent recommendations.</li>
-                <li>Integrating <strong>VR-enabled learning</strong> experiences to support simulation-based training.</li>
-                <li>Managing end-to-end planning, execution, and Agile delivery cycles.</li>
-            </ul>
-        </div>
-
-        <div class="panel green-border">
-            <h2 class="green-text">TECH ARSENAL/ SKILLS</h2>
-            <div class="skill-tag">Project Managemnt </div>
-            <div class="skill-tag">Generative AI</div>
-            <div class="skill-tag">Prompt Engineering</div>
-            <div class="skill-tag">Agile & Scrum</div>
-            <div class="skill-tag">ShotGrid</div>
-            <div class="skill-tag">SyncSketch</div>
-            <div class="skill-tag">SaaS / LMS</div>
-            <div class="skill-tag">Stakeholder Engagement</div>
-            <div class="skill-tag">VR/AR Learning</div>
-            <div class="skill-tag">vfx, CG , 2D, Animation </div>
-        </div>
-
-        <div class="panel red-border" style="grid-column: 1 / -1;">
-            <h2 class="red-text">PRODUCTION CREDITS // HALL OF FAME</h2>
-            <ul class="credit-list">
-                <li class="credit-item"><a href="https://www.imdb.com/title/tt4283088/" target="_blank">GAME OF THRONES (S6 E9)</a></li>
-                <li class="credit-item"><a href="https://www.imdb.com/title/tt0369610/" target="_blank">JURASSIC WORLD (2015)</a></li>
-                <li class="credit-item"><a href="https://www.imdb.com/title/tt4940456/?ref_=fn_t_1" target="_blank">MIRZYA</a></li>
-                <li class="credit-item"><a href="https://www.imdb.com/title/tt4219438/" target="_blank">THE LOST TOMB</a></li>
-                <li class="credit-item"><a href="https://www.imdb.com/title/tt6277462/" target="_blank">BRAHMASTRA</a></li>
-                <li class="credit-item"><a href="https://www.imdb.com/title/tt27679608/" target="_blank">FATEH</a></li>
-            </ul>
-            
-            <h2 class="red-text" style="margin-top:20px;">ADVERTISEMENT PROJECTS</h2>
-            <ul class="credit-list">
-                <li class="credit-item"><a href="https://youtu.be/bkmJtHTDACI?feature=shared" target="_blank">XIAOMI AD</a></li>
-                <li class="credit-item"><a href="https://www.instagram.com/p/B4AgGsmBOVE/?igsh=amw3OGppaXFlcWVy" target="_blank">BUDWEISER AD</a></li>
-            </ul>
-        </div>
-
-        <div class="panel blue-border" style="grid-column: 1 / -1;">
-            <h2 class="blue-text">CHRONICLE ARCHIVE (WORK HISTORY)</h2>
-            <div class="archive-grid">
-                <div class="archive-item"><span class="archive-company">DNEG</span><span class="archive-role">Production Supervisor / Project Manager</span></div>
-                <div class="archive-item"><span class="archive-company">ALZAHRA VFX</span><span class="archive-role">Project Delivery Manager</span></div>
-                <div class="archive-item"><span class="archive-company">HOOP VFX</span><span class="archive-role">VFX Line Producer</span></div>
-                <div class="archive-item"><span class="archive-company">MINTE ANIMATION STUDIO</span><span class="archive-role">Production Manager</span></div>
-                <div class="archive-item"><span class="archive-company">REGH ANIMATION</span><span class="archive-role">Production Coordinator</span></div>
-                <div class="archive-item"><span class="archive-company">GELAROGRACE STUDIO</span><span class="archive-role">Production Coordinator / Shoot Supervisor</span></div>
-                <div class="archive-item"><span class="archive-company">UNIFI MEDIA</span><span class="archive-role">Production Coordinator</span></div>
-                <div class="archive-item"><span class="archive-company">PRANA STUDIO</span><span class="archive-role">VFX Artist</span></div>
-                <div class="archive-item"><span class="archive-company">PRIME FOCUS</span><span class="archive-role">Stereo Compositor</span></div>
-                <div class="archive-item"><span class="archive-company">DELUXE DIGI CAPTION</span><span class="archive-role">Roto 2nd Lead</span></div>
-            </div>
-        </div>
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero" style="position:relative;z-index:1;">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <div class="hero-eyebrow-text">Available for Senior PM Roles</div>
     </div>
+    <h1>Shobhit <span class="last">Mishra</span></h1>
+    <div class="hero-title-sub">Senior Project Manager &nbsp;·&nbsp; AI · SaaS · EdTech · VFX</div>
+    <div class="hero-divider"></div>
+    <p class="hero-summary">
+      Results-driven professional with <strong>13 years of experience</strong> delivering enterprise-scale projects across Agile, SaaS, LMS, EdTech, and Generative AI platforms. Proven track record in <strong>stakeholder management, sprint execution, risk mitigation</strong>, and cross-functional team leadership across India, UAE, and international studios. Holder of <strong>4 professional certifications</strong> including CSM, PMI M.O.R.E., Gen AI, and CDBA.
+    </p>
+    <div class="hero-actions">
+      <a href="#experience" class="btn btn-gold">View Experience</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
 
-    <a href="mailto:shobhitvfx@gmail.com" class="btn-link">ESTABLISH UPLINK</a>
+  <div class="hero-right">
+    <div class="kpi-block">
+      <div class="kpi-label">Years of Experience</div>
+      <div class="kpi-value"><em>13</em></div>
+      <div class="kpi-desc">Spanning VFX production, SaaS, LMS &amp; EdTech platforms</div>
+    </div>
+    <div class="kpi-block">
+      <div class="kpi-label">LMS Users Managed</div>
+      <div class="kpi-value"><em>21k</em>+</div>
+      <div class="kpi-desc">Active learners on enterprise SaaS platform at Squadra Media</div>
+    </div>
+    <div class="kpi-block">
+      <div class="kpi-label">Certifications</div>
+      <div class="kpi-value"><em>4</em></div>
+      <div class="kpi-desc">CSM · Gen AI PM · PMI M.O.R.E · PMI CDBA</div>
+    </div>
+    <div class="kpi-block">
+      <div class="kpi-label">Industries</div>
+      <div class="kpi-value"><em>4</em></div>
+      <div class="kpi-desc">AI/SaaS · EdTech · VFX/Film · Animation &amp; Game Production</div>
+    </div>
+  </div>
 </div>
 
-</body>
-</html>
+<!-- ═══════════ CORE COMPETENCIES ═══════════ -->
+<section id="competencies" style="position:relative;z-index:1;">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <div class="section-num">01</div>
+      <div class="section-title-block">
+        <div class="section-tag">Core Competencies</div>
+        <h2>What I Bring to Every Project</h2>
+      </div>
+    </div>
+    <div class="competencies-grid">
+
+      <div class="comp-item reveal">
+        <div class="comp-icon">🤖</div>
+        <div class="comp-title">Generative AI & LMS</div>
+        <div class="comp-desc">Led AI-enabled content management initiatives including personalization, intelligent tagging, and VR-based immersive learning for 21,000+ users.</div>
+        <div class="comp-tags">
+          <span class="comp-tag">Gen AI</span>
+          <span class="comp-tag">Prompt Engineering</span>
+          <span class="comp-tag">VR Learning</span>
+          <span class="comp-tag">LMS</span>
+        </div>
+      </div>
+
+      <div class="comp-item reveal">
+        <div class="comp-icon">⚡</div>
+        <div class="comp-title">Agile / Scrum Delivery</div>
+        <div class="comp-desc">Certified Scrum Master with extensive experience in sprint planning, backlog prioritization, daily scrums, and iterative delivery in fast-paced SaaS environments.</div>
+        <div class="comp-tags">
+          <span class="comp-tag">Scrum</span>
+          <span class="comp-tag">Sprint Planning</span>
+          <span class="comp-tag">Backlog Mgmt</span>
+          <span class="comp-tag">Agile</span>
+        </div>
+      </div>
+
+      <div class="comp-item reveal">
+        <div class="comp-icon">🎯</div>
+        <div class="comp-title">Stakeholder Management</div>
+        <div class="comp-desc">Primary point of contact for enterprise clients — translating business requirements into scalable solutions and managing expectations across all delivery phases.</div>
+        <div class="comp-tags">
+          <span class="comp-tag">Client Relations</span>
+          <span class="comp-tag">Requirements</span>
+          <span class="comp-tag">Communication</span>
+        </div>
+      </div>
+
+      <div class="comp-item reveal">
+        <div class="comp-icon">📊</div>
+        <div class="comp-title">Risk & Quality Management</div>
+        <div class="comp-desc">Proactively identifies blockers and dependencies. Monitors KPIs, SLAs, and delivery commitments with a structured approach to quality control and process improvement.</div>
+        <div class="comp-tags">
+          <span class="comp-tag">Risk Mitigation</span>
+          <span class="comp-tag">KPI Tracking</span>
+          <span class="comp-tag">SLA Management</span>
+        </div>
+      </div>
+
+      <div class="comp-item reveal">
+        <div class="comp-icon">🎬</div>
+        <div class="comp-title">Production Management</div>
+        <div class="comp-desc">13-year background in CG, VFX, and 2D production management. Oversaw complex pipelines at DNEG, Hoop VFX, and top animation studios globally.</div>
+        <div class="comp-tags">
+          <span class="comp-tag">CG Production</span>
+          <span class="comp-tag">VFX</span>
+          <span class="comp-tag">ShotGrid</span>
+          <span class="comp-tag">SyncSketch</span>
+        </div>
+      </div>
+
+      <div class="comp-item reveal">
+        <div class="comp-icon">👥</div>
+        <div class="comp-title">Cross-Functional Leadership</div>
+        <div class="comp-desc">Leads and mentors cross-functional teams spanning product, engineering, QA, and DevOps. Conducts performance evaluations and drives collaborative team culture.</div>
+        <div class="comp-tags">
+          <span class="comp-tag">Team Mentoring</span>
+          <span class="comp-tag">Resource Planning</span>
+          <span class="comp-tag">Collaboration</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EXPERIENCE ═══════════ -->
+<section id="experience" style="position:relative;z-index:1;">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <div class="section-num">02</div>
+      <div class="section-title-block">
+        <div class="section-tag">Career History</div>
+        <h2>Professional Experience</h2>
+      </div>
+    </div>
+    <div class="exp-layout">
+      <div class="exp-sidebar">
+        <div class="exp-tab active" onclick="switchExp(0)">
+          <div class="exp-tab-company">Squadra Media</div>
+          <div class="exp-tab-period">09/2025 – Present</div>
+        </div>
+        <div class="exp-tab" onclick="switchExp(1)">
+          <div class="exp-tab-company">DNEG</div>
+          <div class="exp-tab-period">04/2025 – 08/2025</div>
+        </div>
+        <div class="exp-tab" onclick="switchExp(2)">
+          <div class="exp-tab-company">Alzahra VFX</div>
+          <div class="exp-tab-period">12/2024</div>
+        </div>
+        <div class="exp-tab" onclick="switchExp(3)">
+          <div class="exp-tab-company">Hoop VFX</div>
+          <div class="exp-tab-period">03/2023 – 06/2024</div>
+        </div>
+        <div class="exp-tab" onclick="switchExp(4)">
+          <div class="exp-tab-company">DNEG (Line Producer)</div>
+          <div class="exp-tab-period">07/2021 – 03/2023</div>
+        </div>
+        <div class="exp-tab" onclick="switchExp(5)">
+          <div class="exp-tab-company">Early Career</div>
+          <div class="exp-tab-period">2012 – 2021</div>
+        </div>
+      </div>
+
+      <div class="exp-content">
+
+        <!-- Panel 0 -->
+        <div class="exp-panel active" id="exp-0">
+          <div class="exp-role-title">Senior Project Manager</div>
+          <div class="exp-role-sub">Squadra Media · Bengaluru · AI / SaaS / LMS</div>
+          <div class="exp-kpis">
+            <div class="exp-kpi"><div class="exp-kpi-val">21k+</div><div class="exp-kpi-lbl">Active Users</div></div>
+            <div class="exp-kpi"><div class="exp-kpi-val">Gen AI</div><div class="exp-kpi-lbl">Content Mgmt</div></div>
+            <div class="exp-kpi"><div class="exp-kpi-val">VR</div><div class="exp-kpi-lbl">Learning Integration</div></div>
+          </div>
+          <ul class="exp-points">
+            <li>Managed end-to-end LMS platform lifecycle for 21,000+ active learners, ensuring performance, scalability, and seamless learning experience</li>
+            <li>Led Generative AI–enabled content management — AI-driven personalization, intelligent tagging, and recommendation systems to boost learner engagement</li>
+            <li>Drove VR-enabled learning integration, embedding immersive simulation content into the LMS for experiential training</li>
+            <li>Owned full Agile delivery cycle: sprint planning, product backlog management, feature prioritization, and sprint execution</li>
+            <li>Collaborated across product, engineering, QA, and DevOps teams to manage releases, deployments, and production readiness</li>
+            <li>Ensured compliance with quality, security, scalability, and data privacy standards in enterprise-grade SaaS and EdTech environments</li>
+            <li>Translated business and learning requirements into scalable LMS functionalities for diverse enterprise clients</li>
+          </ul>
+        </div>
+
+        <!-- Panel 1 -->
+        <div class="exp-panel" id="exp-1">
+          <div class="exp-role-title">Production Supervisor / Project Manager</div>
+          <div class="exp-role-sub">DNEG · Mumbai · High-End VFX</div>
+          <div class="exp-kpis">
+            <div class="exp-kpi"><div class="exp-kpi-val">VFX</div><div class="exp-kpi-lbl">High-End Projects</div></div>
+            <div class="exp-kpi"><div class="exp-kpi-val">Multi</div><div class="exp-kpi-lbl">Dept Coordination</div></div>
+          </div>
+          <ul class="exp-points">
+            <li>Ensured smooth running of high-end digital VFX projects through production and supervision team support</li>
+            <li>Coordinated accurate and efficient flow of information and assets between artists and departments</li>
+            <li>Maintained project databases tracking current element and project statuses with precision</li>
+            <li>Managed client dailies, took detailed production notes, and ensured materials flow to and from clients on schedule</li>
+          </ul>
+        </div>
+
+        <!-- Panel 2 -->
+        <div class="exp-panel" id="exp-2">
+          <div class="exp-role-title">Project Delivery Manager</div>
+          <div class="exp-role-sub">Alzahra VFX · Dubai / Iran</div>
+          <ul class="exp-points">
+            <li>Developed and maintained strong client relationships, ensuring needs and expectations were met at every milestone</li>
+            <li>Led project planning and implementation, ensuring completion on time, within scope, and on budget</li>
+            <li>Facilitated Scrum ceremonies and championed Agile practices and continuous improvement across the team</li>
+            <li>Led and mentored cross-functional teams, conducted performance evaluations, and identified training needs</li>
+          </ul>
+        </div>
+
+        <!-- Panel 3 -->
+        <div class="exp-panel" id="exp-3">
+          <div class="exp-role-title">VFX Line Producer</div>
+          <div class="exp-role-sub">Hoop VFX · Chennai, Tamil Nadu</div>
+          <ul class="exp-points">
+            <li>Managed client relationships, responding to queries and conducting regular update meetings</li>
+            <li>Led project planning and execution ensuring timely delivery and strict budget adherence</li>
+            <li>Implemented Scrum methodologies; facilitated Agile ceremonies and removed team impediments</li>
+            <li>Mentored teams, defined roles, conducted performance evaluations, and fostered collaborative culture</li>
+          </ul>
+        </div>
+
+        <!-- Panel 4 -->
+        <div class="exp-panel" id="exp-4">
+          <div class="exp-role-title">Line Producer</div>
+          <div class="exp-role-sub">DNEG · Mumbai</div>
+          <ul class="exp-points">
+            <li>Facilitated daily scrums and weekly sprints to enhance team processes and goal achievement</li>
+            <li>Prioritized capabilities, defined epics, and facilitated successful implementation</li>
+            <li>Managed resource planning, scheduling, and conflict resolution across production teams</li>
+            <li>Trained new joiners and coached teams for improved processes and productivity</li>
+          </ul>
+        </div>
+
+        <!-- Panel 5 -->
+        <div class="exp-panel" id="exp-5">
+          <div class="exp-role-title">Production Coordinator → Manager</div>
+          <div class="exp-role-sub">Minte · Regh · Gelarograce · Unifi · PRANA · Prime Focus · Deluxe Digi</div>
+          <ul class="exp-points">
+            <li>Grew from Depth Artist / Roto Artist at PRANA Studio & Prime Focus Mumbai into full Production Manager roles</li>
+            <li>Earned VFX credits on Game of Thrones (Season 6, Episode 9), Mirzya, and The Lost Tomb</li>
+            <li>Oversaw project coordination, team workflows, and daily reporting across multiple animation and VFX studios</li>
+            <li>Built foundational expertise in 2D production, CG pipelines, and cross-studio collaboration over a decade</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CREDENTIALS ═══════════ -->
+<section id="credentials" style="position:relative;z-index:1;">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <div class="section-num">03</div>
+      <div class="section-title-block">
+        <div class="section-tag">Credentials</div>
+        <h2>Certifications &amp; Achievements</h2>
+      </div>
+    </div>
+    <!-- Certifications full-width -->
+    <div style="border-top:1px solid var(--border);">
+      <div class="cert-col-title" style="padding:28px 0 0 0; border:none; font-size:0.7rem;">Certifications</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--border);">
+      <div style="border-right:1px solid var(--border);">
+        <div class="cert-row reveal">
+          <span class="cert-name">PMI Essentials M.O.R.E. — Maximizing Project Success</span>
+          <a href="https://www.credly.com/badges/4f4879d2-3636-400a-a556-a75cae51efed/public_url" target="_blank" class="cert-link">Verify ↗</a>
+        </div>
+        <div class="cert-row reveal">
+          <span class="cert-name">Generative AI Overview for Project Managers</span>
+          <a href="https://www.credly.com/badges/c26aa206-fbab-48af-9ea7-d1d2587aa8aa/public_url" target="_blank" class="cert-link">Verify ↗</a>
+        </div>
+      </div>
+      <div>
+        <div class="cert-row reveal">
+          <span class="cert-name">Certified ScrumMaster® (CSM)</span>
+          <a href="https://bcert.me/bc/html/show-badge.html?b=pgaetekp" target="_blank" class="cert-link">Verify ↗</a>
+        </div>
+        <div class="cert-row reveal">
+          <span class="cert-name">PMI Citizen Developer™ Business Architect — CDBA Introduction</span>
+          <a href="https://learning.pmi.org/certificate?id=38163a35-fbd2-4088-a5af-3fa5da74b31a" target="_blank" class="cert-link">Verify ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Credits & Achievements -->
+    <div style="border-top:1px solid var(--border); margin-top:0;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--border);">
+
+        <!-- Film / TV Credits -->
+        <div style="border-right:1px solid var(--border);">
+          <div class="cert-col-title" style="padding:24px 0 24px 0;">🎬 &nbsp;Film &amp; TV Credits</div>
+          <div class="achievement-row reveal" style="padding:16px 0;">
+            <div class="achievement-badge"></div>
+            <div>
+              <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">Game of Thrones</div>
+              <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">S6 · E9 · VFX</div>
+              <a href="https://www.imdb.com/title/tt4283088/" target="_blank" style="font-size:0.62rem;color:var(--gold);text-decoration:none;letter-spacing:0.1em;">IMDb ↗</a>
+            </div>
+          </div>
+          <div class="achievement-row reveal" style="padding:16px 0;">
+            <div class="achievement-badge"></div>
+            <div>
+              <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">Jurassic World</div>
+              <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">2015 · VFX</div>
+              <a href="https://www.imdb.com/title/tt0369610/" target="_blank" style="font-size:0.62rem;color:var(--gold);text-decoration:none;letter-spacing:0.1em;">IMDb ↗</a>
+            </div>
+          </div>
+          <div class="achievement-row reveal" style="padding:16px 0;">
+            <div class="achievement-badge"></div>
+            <div>
+              <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">Mirzya</div>
+              <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">Bollywood · VFX</div>
+              <a href="https://www.imdb.com/title/tt4940456/" target="_blank" style="font-size:0.62rem;color:var(--gold);text-decoration:none;letter-spacing:0.1em;">IMDb ↗</a>
+            </div>
+          </div>
+          <div class="achievement-row reveal" style="padding:16px 0;">
+            <div class="achievement-badge"></div>
+            <div>
+              <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">The Lost Tomb</div>
+              <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">VFX</div>
+              <a href="https://www.imdb.com/title/tt4219438/" target="_blank" style="font-size:0.62rem;color:var(--gold);text-decoration:none;letter-spacing:0.1em;">IMDb ↗</a>
+            </div>
+          </div>
+          <div class="achievement-row reveal" style="padding:16px 0;">
+            <div class="achievement-badge"></div>
+            <div>
+              <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">Brahmastra</div>
+              <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">Bollywood · VFX</div>
+              <a href="https://www.imdb.com/title/tt6277462/" target="_blank" style="font-size:0.62rem;color:var(--gold);text-decoration:none;letter-spacing:0.1em;">IMDb ↗</a>
+            </div>
+          </div>
+          <div class="achievement-row reveal" style="padding:16px 0; border-bottom:none;">
+            <div class="achievement-badge"></div>
+            <div>
+              <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">Fateh</div>
+              <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">Bollywood · VFX</div>
+              <a href="https://www.imdb.com/title/tt27679608/" target="_blank" style="font-size:0.62rem;color:var(--gold);text-decoration:none;letter-spacing:0.1em;">IMDb ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Advertisement Projects -->
+        <div style="border-right:1px solid var(--border);">
+          <div class="cert-col-title" style="padding:24px 0 24px 0;">📺 &nbsp;Advertisement Projects</div>
+          <div class="achievement-row reveal" style="padding:20px 0; flex-direction:column; align-items:flex-start; gap:10px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div class="achievement-badge"></div>
+              <div>
+                <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">Xiaomi</div>
+                <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">Product Commercial</div>
+              </div>
+            </div>
+            <a href="https://youtu.be/bkmJtHTDACI?feature=shared" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;padding:7px 14px;border:1px solid var(--border2);transition:all 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)';" onmouseout="this.style.background='transparent';this.style.color='var(--gold)';">▶ Watch on YouTube ↗</a>
+          </div>
+          <div class="achievement-row reveal" style="padding:20px 0; flex-direction:column; align-items:flex-start; gap:10px; border-bottom:none;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div class="achievement-badge"></div>
+              <div>
+                <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">Budweiser</div>
+                <div style="font-size:0.68rem;color:var(--dim);margin-top:2px;">Brand Campaign</div>
+              </div>
+            </div>
+            <a href="https://www.instagram.com/p/B4AgGsmBOVE/?igsh=amw3OGppaXFlcWVy" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;padding:7px 14px;border:1px solid var(--border2);transition:all 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)';" onmouseout="this.style.background='transparent';this.style.color='var(--gold)';">📸 View on Instagram ↗</a>
+          </div>
+        </div>
+
+        <!-- Education & Career Milestone -->
+        <div>
+          <div class="cert-col-title" style="padding:24px 0 24px 0;">🎓 &nbsp;Education &amp; Milestones</div>
+          <div class="achievement-row reveal" style="padding:16px 0; flex-direction:column; align-items:flex-start; gap:4px;">
+            <div style="font-size:0.82rem;color:var(--ice);font-weight:500;">B.A. — Sunrise University</div>
+            <div style="font-size:0.7rem;color:var(--dim);">Alwar, Rajasthan · 2016</div>
+          </div>
+          <div class="achievement-row reveal" style="padding:16px 0; flex-direction:column; align-items:flex-start; gap:4px;">
+            <div class="achievement-badge" style="margin-bottom:6px;"></div>
+            <div style="font-size:0.82rem;color:var(--ice);">Scaled LMS to 21,000+ enterprise learners</div>
+          </div>
+          <div class="achievement-row reveal" style="padding:16px 0; flex-direction:column; align-items:flex-start; gap:4px;">
+            <div class="achievement-badge" style="margin-bottom:6px;"></div>
+            <div style="font-size:0.82rem;color:var(--ice);">13-yr progression: Artist → Line Producer → Senior PM</div>
+          </div>
+          <div class="achievement-row reveal" style="padding:16px 0; border-bottom:none; flex-direction:column; align-items:flex-start; gap:4px;">
+            <div class="achievement-badge" style="margin-bottom:6px;"></div>
+            <div style="font-size:0.82rem;color:var(--ice);">4 PMI/Scrum Certifications achieved</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact" style="position:relative;z-index:1;">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <div class="section-num">04</div>
+      <div class="section-title-block">
+        <div class="section-tag">Get in Touch</div>
+        <h2>Open to New Opportunities</h2>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <p class="contact-intro">
+          With 13 years of experience across AI, SaaS, EdTech, and VFX delivery — I bring a rare combination of technical depth, creative background, and enterprise project management expertise.<br><br>
+          Currently based in <strong>Pune, Maharashtra</strong>, and open to Senior Project Manager or Delivery Manager roles in AI-driven, SaaS, or EdTech organizations.
+        </p>
+        <div class="btn-gold btn" style="display:inline-flex; cursor:default;">
+          📧 &nbsp; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="493a21262b21203d3f2f31092e24282025672a2624">[email&#160;protected]</a>
+        </div>
+      </div>
+      <div class="contact-right reveal">
+        <div class="contact-item">
+          <div class="contact-item-icon">📧</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <a href="/cdn-cgi/l/email-protection#eb9883848983829f9d8d93ab8c868a8287c5888486" class="contact-item-value"><span class="__cf_email__" data-cfemail="f2819a9d909a9b8684948ab2959f939b9edc919d9f">[email&#160;protected]</span></a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div>
+            <div class="contact-item-label">Phone</div>
+            <span class="contact-item-value">+91 84519 35845</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <div class="contact-item-label">Location</div>
+            <span class="contact-item-value">Pune, Maharashtra, India</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🏆</div>
+          <div>
+            <div class="contact-item-label">Scrum Certification</div>
+            <a href="https://bcert.me/spgaetekp" target="_blank" class="contact-item-value">bcert.me/spgaetekp</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🤖</div>
+          <div>
+            <div class="contact-item-label">AI PM Certification</div>
+            <a href="https://www.credly.com/badges/c26aa206-fbab-48af-9ea7-d1d2587aa8aa/public_url" target="_blank" class="contact-item-value">View on Credly</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      © 2026 Shobhit Mishra &nbsp;·&nbsp; Senior Project Manager &nbsp;·&nbsp; Pune, India
+    </div>
+    <div class="footer-right">
+      13 Years · AI · SaaS · EdTech · VFX
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Experience tab switcher
+function switchExp(idx) {
+  document.querySelectorAll('.exp-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+  document.querySelectorAll('.exp-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+}
+
+//
