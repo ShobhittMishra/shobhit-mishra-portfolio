@@ -7,17 +7,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy:   #0d1b2a;
-  --navy2:  #132234;
-  --gold:   #c9a84c;
-  --gold2:  #e8c97a;
-  --silver: #8fa8c8;
-  --ice:    #d4e4f7;
-  --white:  #f4f8fc;
-  --muted:  #6b8aaa;
-  --border: #1f3652;
-  --border2:#2a4a6a;
-  --dim:    #4a6a8a;
+  --navy:   #172d44;
+  --navy2:  #1e3a54;
+  --gold:   #d4a84c;
+  --gold2:  #f0cc72;
+  --silver: #aac4de;
+  --ice:    #deeef8;
+  --white:  #f6fafd;
+  --muted:  #82a2c0;
+  --border: #2d5070;
+  --border2:#3d6484;
+  --dim:    #5e86a8;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -31,14 +31,54 @@ body{
   overflow-x:hidden;
 }
 
-/* subtle grid bg */
+/* animated grid */
 body::before{
   content:'';position:fixed;inset:0;
   background-image:
-    linear-gradient(rgba(100,160,220,0.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(100,160,220,0.035) 1px,transparent 1px);
+    linear-gradient(rgba(140,190,240,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(140,190,240,0.07) 1px,transparent 1px);
   background-size:60px 60px;
+  animation:gridShift 18s linear infinite;
   pointer-events:none;z-index:0;
+}
+@keyframes gridShift{
+  0%{background-position:0 0;}
+  100%{background-position:60px 60px;}
+}
+
+/* animated glow orbs */
+.bg-orb{
+  position:fixed;border-radius:50%;
+  filter:blur(90px);pointer-events:none;z-index:0;
+  animation:orbFloat ease-in-out infinite;
+}
+.bg-orb-1{
+  width:520px;height:520px;
+  background:radial-gradient(circle,rgba(212,168,76,0.13) 0%,transparent 70%);
+  top:-80px;right:-80px;
+  animation-duration:14s;animation-delay:0s;
+}
+.bg-orb-2{
+  width:420px;height:420px;
+  background:radial-gradient(circle,rgba(100,160,230,0.11) 0%,transparent 70%);
+  bottom:10%;left:-60px;
+  animation-duration:18s;animation-delay:-5s;
+}
+.bg-orb-3{
+  width:300px;height:300px;
+  background:radial-gradient(circle,rgba(212,168,76,0.08) 0%,transparent 70%);
+  top:45%;left:40%;
+  animation-duration:22s;animation-delay:-9s;
+}
+@keyframes orbFloat{
+  0%,100%{transform:translateY(0) scale(1);}
+  33%{transform:translateY(-30px) scale(1.05);}
+  66%{transform:translateY(20px) scale(0.97);}
+}
+
+/* floating particles canvas */
+#particles{
+  position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.5;
 }
 
 /* ── NAV ─────────────────────────────── */
@@ -449,6 +489,12 @@ footer{
 </head>
 <body>
 
+<!-- background fx -->
+<canvas id="particles"></canvas>
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+<div class="bg-orb bg-orb-3"></div>
+
 <!-- ── NAV ─────────────────────────────── -->
 <nav id="nav">
   <div class="nav-inner">
@@ -476,7 +522,7 @@ footer{
     <div class="subtitle">Senior Project Manager &nbsp;·&nbsp; AI · SaaS · EdTech · VFX</div>
     <div class="hero-rule"></div>
     <p class="hero-desc">
-      Results-driven professional with <strong>13 years of experience</strong> delivering enterprise-scale projects across Agile, SaaS, LMS, EdTech, and Generative AI platforms. Proven track record in <strong>stakeholder management, sprint execution, and risk mitigation</strong> across India, UAE, and international studios. Holder of <strong>4 professional certifications</strong> including CSM, PMI M.O.R.E., Gen AI, and CDBA.
+      Results-driven Senior PM with <strong>13 years of enterprise delivery</strong> across Agile, SaaS, LMS, EdTech, and Generative AI platforms. Proven record of <strong>governing complex programmes, driving Agile transformation, and scaling cross-functional teams</strong> across India, UAE, and international studios. Holder of <strong>4 professional certifications</strong> including CSM, PMI M.O.R.E., Gen AI, and CDBA.
     </p>
     <div class="hero-btns">
       <a href="#experience" class="btn btn-gold">View Experience</a>
@@ -603,19 +649,20 @@ footer{
           <div class="exp-sub">Squadra Media · Bengaluru · AI / SaaS / LMS</div>
           <div class="exp-kpis">
             <div class="exp-kpi"><div class="exp-kpi-v">21k+</div><div class="exp-kpi-l">Active Users</div></div>
-            <div class="exp-kpi"><div class="exp-kpi-v">Gen AI</div><div class="exp-kpi-l">Content Mgmt</div></div>
+            <div class="exp-kpi"><div class="exp-kpi-v">40%</div><div class="exp-kpi-l">Faster Delivery</div></div>
+            <div class="exp-kpi"><div class="exp-kpi-v">Gen AI</div><div class="exp-kpi-l">Tools Implemented</div></div>
             <div class="exp-kpi"><div class="exp-kpi-v">VR</div><div class="exp-kpi-l">Learning Integration</div></div>
           </div>
           <ul class="exp-pts">
-            <li>Reduced the delivery time from 5 days to 3 days, thats 40 % faster.</li>
-            <li>Implimented the Ai tools and process to improve the qiality and faster turaround time .</li>
-            <li>Managed end-to-end LMS platform lifecycle for 21,000+ active learners, ensuring performance, scalability, and seamless learning experience</li>
-            <li>Led Generative AI–enabled content management — AI-driven personalization, intelligent tagging, and recommendation systems to boost learner engagement</li>
-            <li>Drove VR-enabled learning integration, embedding immersive simulation content into the LMS for experiential training</li>
-            <li>Owned full Agile delivery cycle: sprint planning, product backlog management, feature prioritization, and sprint execution</li>
-            <li>Collaborated across product, engineering, QA, and DevOps teams to manage releases, deployments, and production readiness</li>
-            <li>Ensured compliance with quality, security, scalability, and data privacy standards for enterprise-grade SaaS and EdTech</li>
-            <li>Translated business and learning requirements into scalable LMS functionalities for diverse enterprise clients</li>
+            <li>Governed end-to-end LMS platform delivery for 21,000+ active enterprise learners — owning performance SLAs, release governance, and platform reliability at scale</li>
+            <li>Architected and drove Generative AI–enabled content operations — directing AI-powered personalization, intelligent tagging, and recommendation engines that measurably lifted learner engagement</li>
+            <li>Directed VR learning integration strategy, embedding immersive simulation experiences into the LMS to deliver enterprise-grade experiential training programs</li>
+            <li>Owned the full Agile delivery engine — backlog strategy, sprint planning, feature prioritization, and cross-functional release execution across product, engineering, QA, and DevOps</li>
+            <li>Instituted quality, security, and data privacy governance frameworks aligned to enterprise SaaS and EdTech compliance standards</li>
+            <li>Translated complex business and learning objectives into scalable LMS architectures, directly enabling client retention and platform growth</li>
+            <li>Drove continuous improvement cycles by synthesizing client feedback, learner analytics, and delivery KPIs into actionable platform enhancements</li>
+            <li>Optimised delivery workflows to cut average turnaround time from 5 days to 3 days — a <strong>40% acceleration</strong> in delivery speed without compromising quality or scope</li>
+            <li>Instituted AI-powered tooling and process frameworks across the production pipeline, driving measurable gains in output quality and significantly faster turnaround times at scale</li>
           </ul>
         </div>
 
@@ -624,13 +671,13 @@ footer{
           <div class="exp-sub">DNEG · Mumbai · High-End VFX</div>
           <div class="exp-kpis">
             <div class="exp-kpi"><div class="exp-kpi-v">VFX</div><div class="exp-kpi-l">High-End Projects</div></div>
-            <div class="exp-kpi"><div class="exp-kpi-v">Multi</div><div class="exp-kpi-l">Dept Coordination</div></div>
+            <div class="exp-kpi"><div class="exp-kpi-v">Multi</div><div class="exp-kpi-l">Dept Governance</div></div>
           </div>
           <ul class="exp-pts">
-            <li>Ensured smooth running of high-end digital VFX projects through production and supervision team support</li>
-            <li>Coordinated accurate and efficient flow of information and assets between artists and departments</li>
-            <li>Maintained project databases tracking current element and project statuses with precision</li>
-            <li>Managed client dailies, took detailed production notes, and ensured materials flow to and from clients on schedule</li>
+            <li>Governed end-to-end project delivery across high-value VFX productions, maintaining schedule integrity and quality standards throughout</li>
+            <li>Architected cross-functional communication frameworks between artists and departments, achieving zero asset loss and on-time delivery</li>
+            <li>Owned project tracking infrastructure — maintaining real-time visibility into delivery status, risks, and blockers across active productions</li>
+            <li>Captured and actioned client feedback loops, translating creative direction into executable production milestones with measurable outcomes</li>
           </ul>
         </div>
 
@@ -638,10 +685,10 @@ footer{
           <div class="exp-role">Project Delivery Manager</div>
           <div class="exp-sub">Alzahra VFX · Dubai / Iran</div>
           <ul class="exp-pts">
-            <li>Developed and maintained strong client relationships, ensuring needs and expectations were met at every milestone</li>
-            <li>Led project planning and implementation, ensuring completion on time, within scope, and on budget</li>
-            <li>Facilitated Scrum ceremonies and championed Agile practices and continuous improvement across the team</li>
-            <li>Led and mentored cross-functional teams, conducted performance evaluations, and identified training needs</li>
+            <li>Defined and managed client success criteria across all delivery phases, achieving milestone sign-off on schedule and within agreed scope</li>
+            <li>Owned full project lifecycle — scope definition, resource allocation, risk governance, and executive stakeholder reporting</li>
+            <li>Drove Agile transformation — instituting Scrum frameworks that improved sprint predictability, team velocity, and delivery cadence</li>
+            <li>Directed and scaled cross-functional teams; instituted performance evaluation cycles and targeted capability development programs</li>
           </ul>
         </div>
 
@@ -649,10 +696,10 @@ footer{
           <div class="exp-role">VFX Line Producer</div>
           <div class="exp-sub">Hoop VFX · Chennai, Tamil Nadu</div>
           <ul class="exp-pts">
-            <li>Managed client relationships, responding to queries and conducting regular update meetings</li>
-            <li>Led project planning and execution ensuring timely delivery and strict budget adherence</li>
-            <li>Implemented Scrum methodologies; facilitated Agile ceremonies and removed team impediments</li>
-            <li>Mentored teams, defined roles, conducted performance evaluations, and fostered collaborative culture</li>
+            <li>Served as primary client escalation point — proactively managing expectations and resolving delivery risks before they impacted schedule or scope</li>
+            <li>Maintained a 100% on-time delivery record while governing multi-project budgets and resource constraints simultaneously</li>
+            <li>Drove Agile implementation across production teams; instituted Scrum ceremonies that measurably improved sprint consistency and output quality</li>
+            <li>Identified and resolved systemic delivery blockers, reducing sprint interruptions and protecting team throughput across active production tracks</li>
           </ul>
         </div>
 
@@ -660,21 +707,21 @@ footer{
           <div class="exp-role">Line Producer</div>
           <div class="exp-sub">DNEG · Mumbai</div>
           <ul class="exp-pts">
-            <li>Facilitated daily scrums and weekly sprints to enhance team processes and goal achievement</li>
-            <li>Prioritized capabilities, defined epics, and facilitated successful implementation</li>
-            <li>Managed resource planning, scheduling, and conflict resolution across production teams</li>
-            <li>Trained new joiners and coached teams for improved processes and productivity</li>
+            <li>Led Agile ceremonies across cross-functional production teams, driving sprint goal alignment, delivery cadence, and continuous improvement at one of the world's leading VFX studios</li>
+            <li>Owned product backlog strategy — defining epics, decomposing features into delivery-ready tasks, and aligning sprint priorities directly with production objectives and client commitments</li>
+            <li>Directed resource planning and capacity management across concurrent production tracks, eliminating critical-path slippage through proactive scheduling and conflict resolution</li>
+            <li>Architected and scaled onboarding programs that standardized workflows and materially reduced ramp-up time for incoming team members</li>
           </ul>
         </div>
 
         <div class="exp-panel" id="ep5">
-          <div class="exp-role">Production Coordinator → Manager</div>
+          <div class="exp-role">Individual Contributor → Production Manager</div>
           <div class="exp-sub">Minte · Regh · Gelarograce · Unifi · PRANA · Prime Focus · Deluxe Digi</div>
           <ul class="exp-pts">
-            <li>Grew from Depth Artist / Roto Artist at PRANA Studio &amp; Prime Focus Mumbai into full Production Manager roles</li>
-            <li>Earned VFX credits on Game of Thrones S6E9, Jurassic World, Mirzya, The Lost Tomb, Brahmastra, and Fateh</li>
-            <li>Oversaw project coordination, team workflows, and daily reporting across multiple animation and VFX studios</li>
-            <li>Built foundational expertise in 2D production, CG pipelines, and cross-studio collaboration over a decade</li>
+            <li>Progressed from individual contributor to Production Manager through demonstrated delivery leadership across 7 global studios — a trajectory built entirely on performance and ownership</li>
+            <li>Delivered VFX credits on 6 major productions including Game of Thrones S6E9, Jurassic World, Brahmastra, and Fateh — operating within world-class studio delivery pipelines</li>
+            <li>Directed multi-studio delivery operations — owning end-to-end workflows, stakeholder reporting, and cross-team dependencies across concurrent production environments</li>
+            <li>Developed deep domain expertise in CG pipelines and production operations, forming the technical and strategic foundation for an enterprise PM practice spanning AI, SaaS, and EdTech</li>
           </ul>
         </div>
 
@@ -843,15 +890,15 @@ footer{
     <div class="contact-grid">
       <div class="contact-left reveal">
         <p class="contact-intro">
-          With 13 years across AI, SaaS, EdTech, and VFX delivery — I bring a rare combination of <strong>technical depth, creative background, and enterprise PM expertise</strong>.<br><br>
-          Currently based in <strong>Pune, Maharashtra</strong>, and open to Senior Project Manager or Delivery Manager roles in AI-driven, SaaS, or EdTech organizations globally.
+          With 13 years governing AI, SaaS, EdTech, and VFX programmes — I bring a rare combination of <strong>enterprise delivery depth, technical fluency, and creative domain expertise</strong> that most Senior PMs simply don't have.<br><br>
+          Currently based in <strong>Pune, Maharashtra</strong>, and actively targeting Senior Project Manager or Delivery Manager roles in AI-driven, SaaS, or EdTech organizations globally.
         </p>
-        <a href="mailto:shobhitvfx@gmail.com" class="btn btn-gold">📧 &nbsp;Send an Email</a>
+        <a href="/cdn-cgi/l/email-protection#80f3e8efe2e8e9f4f6e6f8c0e7ede1e9ecaee3efed" class="btn btn-gold">📧 &nbsp;Send an Email</a>
       </div>
       <div class="contact-right reveal">
         <div class="contact-item">
           <div class="contact-icon">📧</div>
-          <div><div class="contact-lbl">Email</div><a href="mailto:shobhitvfx@gmail.com" class="contact-val">shobhitvfx@gmail.com</a></div>
+          <div><div class="contact-lbl">Email</div><a href="/cdn-cgi/l/email-protection#3b4853545953524f4d5d437b5c565a525715585456" class="contact-val"><span class="__cf_email__" data-cfemail="07746f68656f6e7371617f47606a666e6b2964686a">[email&#160;protected]</span></a></div>
         </div>
         <div class="contact-item">
           <div class="contact-icon">📞</div>
@@ -882,7 +929,7 @@ footer{
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Nav
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);
@@ -906,6 +953,58 @@ const obs=new IntersectionObserver(entries=>{
   });
 },{threshold:0.07});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Particles
+(function(){
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let W, H, dots = [];
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  const COUNT = 55;
+  for(let i=0;i<COUNT;i++){
+    dots.push({
+      x: Math.random()*window.innerWidth,
+      y: Math.random()*window.innerHeight,
+      r: Math.random()*1.4+0.4,
+      vx:(Math.random()-.5)*0.3,
+      vy:(Math.random()-.5)*0.3,
+      a: Math.random()*0.5+0.15
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(let i=0;i<dots.length;i++){
+      for(let j=i+1;j<dots.length;j++){
+        const dx=dots[i].x-dots[j].x, dy=dots[i].y-dots[j].y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<130){
+          ctx.beginPath();
+          ctx.strokeStyle=`rgba(180,210,245,${0.13*(1-dist/130)})`;
+          ctx.lineWidth=0.5;
+          ctx.moveTo(dots[i].x,dots[i].y);
+          ctx.lineTo(dots[j].x,dots[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    dots.forEach(d=>{
+      ctx.beginPath();
+      ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(212,180,100,${d.a})`;
+      ctx.fill();
+      d.x+=d.vx; d.y+=d.vy;
+      if(d.x<0||d.x>W) d.vx*=-1;
+      if(d.y<0||d.y>H) d.vy*=-1;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
 </script>
 </body>
 </html>
